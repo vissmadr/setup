@@ -1,0 +1,16 @@
+git
+networkmanager
+neovim
+ttf-jetbrains-mono-nerd
+gammastep
+wmenu
+otf-font-awesome
+wl-clipboard
+less
+nodejs
+npm
+pnpm
+firefox
+imv
+tldr
+btop
