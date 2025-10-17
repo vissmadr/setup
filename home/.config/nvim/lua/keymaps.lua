@@ -45,17 +45,15 @@ map({ "n", "v" }, "<leader>d=", function()
 end, { desc = "Format" })
 
 -- Obsidian --
-map({ "n", "v" }, "<leader>oo", "<cmd>Obsidian open<cr>", { desc = "Open" })
-map({ "n", "v" }, "<leader>oh", "<cmd>Obsidian check<cr>", { desc = "Health" })
+map({ "n", "v" }, "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Open" })
+map({ "n", "v" }, "<leader>oh", "<cmd>ObsidianCheck<cr>", { desc = "Health" })
 
-map({ "n", "v" }, "<leader>on", "<cmd>Obsidian new<cr>", { desc = "New" })
-map({ "n", "v" }, "<leader>or", "<cmd>Obsidian rename<cr>", { desc = "Rename" })
-map({ "n", "v" }, "<leader>ot", "<cmd>Obsidian template<cr>", { desc = "Template" })
+map({ "n", "v" }, "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "New" })
+map({ "n", "v" }, "<leader>or", "<cmd>ObsidianRename<cr>", { desc = "Rename" })
+map({ "n", "v" }, "<leader>ot", "<cmd>ObsidianTemplate<cr>", { desc = "Template" })
 
-map({ "n", "v" }, "<leader>oe", "<cmd>Obsidian quick_switch<cr>", { desc = "Files" })
-map({ "n", "v" }, "<leader>ow", "<cmd>Obsidian search<cr>", { desc = "Search" })
+map({ "n", "v" }, "<leader>oe", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Files" })
+map({ "n", "v" }, "<leader>ow", "<cmd>ObsidianSearch<cr>", { desc = "Search" })
 
-map({ "n", "v" }, "<leader>ol", "<cmd>Obsidian links<cr>", { desc = "Links" })
-map({ "n", "v" }, "<leader>ob", "<cmd>Obsidian backlinks<cr>", { desc = "Backlinks" })
-
-map({ "n", "v" }, "<leader>op", "<cmd>Obsidian paste_img<cr>", { desc = "Paste Image" })
+map({ "n", "v" }, "<leader>ol", "<cmd>ObsidianLinks<cr>", { desc = "Links" })
+map({ "n", "v" }, "<leader>ob", "<cmd>ObsidianBacklinks<cr>", { desc = "Backlinks" })
