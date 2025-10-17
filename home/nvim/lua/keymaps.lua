@@ -27,11 +27,14 @@ map({ "n", "v" }, "<leader>v", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
 -- Telescope --
 map({ "n", "v" }, "<leader>q", "<cmd>Telescope<CR>", { desc = "Telescope" })
 map({ "n", "v" }, "<leader>w", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
-map({ "n", "v" }, "<leader>e", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
-map({ "n", "v" }, "<leader>r", "<cmd>Telescope oldfiles<CR>", { desc = "Oldfiles" })
+map({ "n", "v" }, "<leader>a", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
+map({ "n", "v" }, "<leader>e", "<cmd>Telescope oldfiles<CR>", { desc = "Recent" })
+map({ "n", "v" }, "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Registers" })
 
--- Oil --
-map({ "n", "v" }, "<leader>a", "<cmd>Oil<CR>", { desc = "Oil" })
+-- Yazi --
+map({ "n", "v" }, "<leader>s", "<cmd>Yazi<CR>", { desc = "Yazi" })
+map({ "n", "v" }, "<leader>j", "<cmd>Yazi<CR>", { desc = "Yazi" })
+map({ "n", "v" }, "<leader>k", "<cmd>Yazi<CR>", { desc = "Yazi" })
 
 -- LSP Target --
 map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })

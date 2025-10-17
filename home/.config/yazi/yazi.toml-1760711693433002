@@ -1,0 +1,7 @@
+[opener]
+edit = [
+  { run = "nvim \"$1\"", desc = "Edit any file", block = true }
+]
+
+[manager]
+show_hidden = true

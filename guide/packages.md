@@ -1,6 +1,7 @@
 git
 networkmanager
 neovim
+yazi
 ttf-jetbrains-mono-nerd
 gammastep
 wmenu
