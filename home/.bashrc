@@ -8,12 +8,15 @@
 PS1='[\W]\$ '
 
 alias ..='cd ..'
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias ls='ls --color=auto'
 alias l='echo; ls -la; echo'
 alias ll='echo; ls -la; echo'
 alias v='nvim'
-alias c='clear'
+alias s='yazi'
+alias k='yazi'
+alias j='yazi'
+alias x='clear'
 alias lock='swaylock'
 
 g() {
@@ -36,6 +39,12 @@ g() {
   esac
 }
 
+# Zoxide
+eval "$(zoxide init --cmd c bash)"
+
 # In case Ctrl-R fzf doesn't work
-# source /usr/share/fzf/key-bindings.bash
-# source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+
+export PATH="$HOME/.local/bin:$PATH"
+
