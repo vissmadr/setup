@@ -5,7 +5,7 @@ marker_marked = { fg = "#957fb8", bg = "#957fb8" }
 marker_selected = { fg = "#ffa066", bg = "#ffa066" }
 
 cwd = { fg = "#e6c384" }
-hovered = { reversed = true }
+hovered = { reversed = false, bg = "#363646" }
 preview_hovered = { reversed = true }
 
 find_keyword = { fg = "#ffa066", bg = "#1f1f28" }

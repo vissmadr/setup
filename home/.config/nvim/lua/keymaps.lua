@@ -11,6 +11,7 @@ map("n", "<C-i>", "<C-o>", { noremap = true, silent = true })
 -- Terminal --
 map({ "n", "v" }, "<leader>t", "<cmd>terminal<CR>", { desc = "Terminal" })
 map("t", "<C-Space>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
+map("t", "<leader><leader>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
 
 -- Splits --
 map({ "n", "v" }, "<C-A-h>", "<C-w><", { desc = "Decrease Width" })
@@ -33,8 +34,6 @@ map({ "n", "v" }, "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Registe
 
 -- Yazi --
 map({ "n", "v" }, "<leader>s", "<cmd>Yazi<CR>", { desc = "Yazi" })
-map({ "n", "v" }, "<leader>j", "<cmd>Yazi<CR>", { desc = "Yazi" })
-map({ "n", "v" }, "<leader>k", "<cmd>Yazi<CR>", { desc = "Yazi" })
 
 -- LSP Target --
 map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })

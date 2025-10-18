@@ -14,8 +14,6 @@ alias l='echo; ls -la; echo'
 alias ll='echo; ls -la; echo'
 alias v='nvim'
 alias s='yazi'
-alias k='yazi'
-alias j='yazi'
 alias x='clear'
 alias lock='swaylock'
 
@@ -30,11 +28,15 @@ g() {
 
   case "$cmd" in
     s)  git status ;;
+    b)  git branch -a ;;
+    l)  git log --oneline ;;
+    L)  git log ;;
+    d)  git diff ;;
+    D)  git diff --staged ;;
     p)  git pull ;;
     a)  git add . ;;
-    u)  git commit -m "update" ;;
+    c)  git commit -m "${@:-"update"}" ;;
     P)  git push ;;
-    l)  git log ;;
     *)  git "$cmd" "$@" ;;
   esac
 }
