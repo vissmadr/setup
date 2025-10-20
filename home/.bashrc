@@ -24,7 +24,7 @@ alias ..='cd ..'
 alias grep='grep --color=auto'
 alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first'
 alias v='nvim'
-alias s='yazi'
+alias a='yazi'
 alias x='clear'
 alias lock='swaylock'
 

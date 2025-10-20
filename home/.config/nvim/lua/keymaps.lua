@@ -19,20 +19,20 @@ map({ "n", "v" }, "<C-A-k>", "<C-w>+", { desc = "Increase Height" })
 map({ "n", "v" }, "<C-A-l>", "<C-w>>", { desc = "Increase Width" })
 
 -- Workspace --
-map({ "n", "v" }, "<leader>x", "<cmd>set cursorline!<CR>", { desc = "Toggle Cursorline" })
-map({ "n", "v" }, "<leader>z", "<cmd>set cursorcolumn!<CR>", { desc = "Toggle Cursorcolumn" })
+map({ "n", "v" }, "<leader>z", "<cmd>set cursorline!<CR>", { desc = "Toggle Cursorline" })
+map({ "n", "v" }, "<leader>x", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
 map({ "n", "v" }, "<leader>c", "<cmd>set wrap!<CR>", { desc = "Toggle Wrap" })
-map({ "n", "v" }, "<leader>v", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
 
 -- Telescope --
-map({ "n", "v" }, "<leader>q", "<cmd>Telescope<CR>", { desc = "Telescope" })
+map({ "n", "v" }, "<leader>q", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 map({ "n", "v" }, "<leader>w", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
-map({ "n", "v" }, "<leader>a", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 map({ "n", "v" }, "<leader>e", "<cmd>Telescope oldfiles<CR>", { desc = "Recent" })
 map({ "n", "v" }, "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Registers" })
+map({ "n", "v" }, "<leader>t", "<cmd>Telescope<CR>", { desc = "Telescope" })
 
--- Yazi --
-map({ "n", "v" }, "<leader>s", "<cmd>Yazi<CR>", { desc = "Yazi" })
+-- Explorers --
+map({ "n", "v" }, "<leader>a", "<cmd>Yazi<CR>", { desc = "Yazi" })
+map({ "n", "v" }, "<leader>s", "<cmd>Oil<CR>", { desc = "Oil" })
 
 -- LSP Target --
 map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })
