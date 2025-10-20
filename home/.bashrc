@@ -2,21 +2,33 @@
 # ~/.bashrc
 #
 
+#--- Vissmadr ---#
+
+########
+# Bash #
+########
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 PS1='[\W]\$ '
 
+set -o vi
+
+###########
+# Aliases #
+###########
+
+# general
 alias ..='cd ..'
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
-alias l='echo; ls -la; echo'
-alias ll='echo; ls -la; echo'
+alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first'
 alias v='nvim'
 alias s='yazi'
 alias x='clear'
 alias lock='swaylock'
 
+# git
 g() {
   if [[ $# -eq 0 ]]; then
     git
@@ -41,12 +53,22 @@ g() {
   esac
 }
 
-# Zoxide
+############
+# Programs #
+############
+
+# zoxide
 eval "$(zoxide init --cmd c bash)"
 
-# In case Ctrl-R fzf doesn't work
+# eza
+export EXA_COLORS="da=2:uu=2:"
+
+# fzf: In case Ctrl-R doesn't work good
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 
-export PATH="$HOME/.local/bin:$PATH"
+#########
+# Other #
+#########
 
+export EDITOR=nvim

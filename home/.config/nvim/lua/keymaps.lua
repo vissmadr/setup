@@ -11,7 +11,6 @@ map("n", "<C-i>", "<C-o>", { noremap = true, silent = true })
 -- Terminal --
 map({ "n", "v" }, "<leader>t", "<cmd>terminal<CR>", { desc = "Terminal" })
 map("t", "<C-Space>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
-map("t", "<leader><leader>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
 
 -- Splits --
 map({ "n", "v" }, "<C-A-h>", "<C-w><", { desc = "Decrease Width" })
