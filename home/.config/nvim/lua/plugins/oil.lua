@@ -11,7 +11,6 @@ return {
 
 			win_options = {
 				signcolumn = "yes",
-				conceallevel = 0,
 			},
 
 			view_options = { show_hidden = true },
