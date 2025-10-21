@@ -22,9 +22,10 @@ set -o vi
 # general
 alias ..='cd ..'
 alias grep='grep --color=auto'
-alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first'
+alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first --icons --git'
 alias v='nvim'
-alias a='yazi'
+alias a='tmux'
+alias f='yazi'
 alias x='clear'
 alias lock='swaylock'
 
