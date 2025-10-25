@@ -30,6 +30,10 @@ map({ "n", "v" }, "<leader>e", "<cmd>Telescope oldfiles<CR>", { desc = "Recent" 
 map({ "n", "v" }, "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Registers" })
 map({ "n", "v" }, "<leader>t", "<cmd>Telescope<CR>", { desc = "Telescope" })
 
+-- Leap --
+map({ "n", "x", "o" }, "s", "<Plug>(leap)")
+map("n", "S", "<Plug>(leap-from-window)")
+
 -- Explorers --
 map({ "n", "v" }, "<leader>a", "<cmd>Oil<CR>", { desc = "Oil" })
 map({ "n", "v" }, "<leader>f", "<cmd>Yazi<CR>", { desc = "Yazi" })

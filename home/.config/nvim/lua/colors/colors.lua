@@ -10,8 +10,7 @@ M.ui = {
   more_msg      = "#658594",
   mode_msg      = "#FF9E3B",
 
-  fg_dim     = "#C8C093",
-  fg_light   = "#DCD7BA",
+  fg_dim     = "#C8C093", fg_light   = "#DCD7BA",
   fg_reverse = "#223249",
 
   bg_dim     = "#181820",
@@ -111,7 +110,7 @@ M.diag = {
   ok      = "#98BB6C",
   error   = "#E82424",
   warning = "#FF9E3B",
-  info    = "#658594",
+  info    = "#7E9CD8",
   hint    = "#6A9589",
 }
 
