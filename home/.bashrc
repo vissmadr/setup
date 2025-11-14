@@ -48,7 +48,14 @@ g() {
     D)  git diff --staged ;;
     p)  git pull ;;
     a)  git add . ;;
-    c)  git commit -m "${@:-"update"}" ;;
+    u)  git commit -m "update" ;;
+    c)
+      if [[ $# -ne 1 ]]; then
+        echo 'Usage: g c "commit message"' >&2
+        return 1
+      fi
+      git commit -m "$1"
+      ;;
     P)  git push ;;
     *)  git "$cmd" "$@" ;;
   esac
