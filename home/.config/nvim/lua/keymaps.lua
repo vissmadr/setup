@@ -9,7 +9,7 @@ map("n", "<C-o>", "<C-i>", { noremap = true, silent = true })
 map("n", "<C-i>", "<C-o>", { noremap = true, silent = true })
 
 -- Terminal --
-map({ "n", "v" }, "<leader>s", "<cmd>terminal<CR>", { desc = "Terminal" })
+map({ "n", "v" }, "<leader>f", "<cmd>terminal<CR>", { desc = "Terminal" })
 map("t", "<C-a>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
 
 -- Splits --
@@ -19,8 +19,8 @@ map({ "n", "v" }, "<C-A-k>", "<C-w>+", { desc = "Increase Height" })
 map({ "n", "v" }, "<C-A-l>", "<C-w>>", { desc = "Increase Width" })
 
 -- Workspace --
-map({ "n", "v" }, "<leader>z", "<cmd>set cursorline!<CR>", { desc = "Toggle Cursorline" })
-map({ "n", "v" }, "<leader>x", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
+map({ "n", "v" }, "<leader>z", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
+map({ "n", "v" }, "<leader>x", "<cmd>set cursorline!<CR>", { desc = "Toggle Cursorline" })
 map({ "n", "v" }, "<leader>c", "<cmd>set wrap!<CR>", { desc = "Toggle Wrap" })
 
 -- Telescope --
@@ -36,7 +36,7 @@ map("n", "S", "<Plug>(leap-from-window)")
 
 -- Explorers --
 map({ "n", "v" }, "<leader>a", "<cmd>Oil<CR>", { desc = "Oil" })
-map({ "n", "v" }, "<leader>f", "<cmd>Yazi<CR>", { desc = "Yazi" })
+map({ "n", "v" }, "<leader>s", "<cmd>AerialOpen float<CR>", { desc = "Aerial" })
 
 -- LSP Target --
 map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })
