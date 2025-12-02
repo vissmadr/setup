@@ -10,5 +10,5 @@ return {
 		require("aerial").setup({
 			highlight_on_jump = 200,
 		})
-	end
+	end,
 }
