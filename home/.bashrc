@@ -2,8 +2,6 @@
 # ~/.bashrc
 #
 
-#--- Vissmadr ---#
-
 ########
 # Bash #
 ########
@@ -71,7 +69,7 @@ eval "$(zoxide init --cmd c bash)"
 # eza
 export EXA_COLORS="da=2:uu=2:"
 
-# fzf: In case Ctrl-R doesn't work good
+# fzf: In case Ctrl-R doesn't work well
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 
@@ -80,3 +78,6 @@ source /usr/share/fzf/completion.bash
 #########
 
 export EDITOR=nvim
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
