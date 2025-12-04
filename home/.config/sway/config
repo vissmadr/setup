@@ -9,7 +9,7 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
+set $term alacritty
 set $menu wmenu-run
 
 
@@ -99,25 +99,33 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-#############
-# Utilities #
-#############
+##########
+# Volume #
+##########
 
-# Volume control via PulseAudio
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
-# Brightness control via brightnessctl
+##############
+# Brightness #
+##############
+
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 2%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 2%+
 
-# Screenshot
+##############
+# Screenshot #
+##############
+
 bindsym $mod+m exec grim -g "$(slurp)" ~/Pictures/screenshots/$(date +'%Y%m%d-%H%M%S').png
 bindsym $mod+Shift+m exec grim ~/Pictures/screenshots/$(date +'%Y%m%d-%H%M%S').png
 
-# Recording
+#############
+# Recording #
+#############
+
 bindsym $mod+n exec wf-recorder -g "$(slurp)" -f ~/Videos/screencasts/$(date +'%Y%m%d-%H%M%S').mp4
 bindsym $mod+Shift+n exec wf-recorder -f ~/Videos/screencasts/$(date +'%Y%m%d-%H%M%S').mp4
 bindsym $mod+b exec pkill -INT wf-recorder
@@ -128,24 +136,27 @@ bindsym $mod+b exec pkill -INT wf-recorder
 
 exec waybar
 
+###############
+# Night Light #
+###############
+
+exec gammastep -O 5000
 
 #########
 # Input #
 #########
 
+# 1. Caps Lock as Ctrl.
+# 2. Super next to Space, and Alt next
+#    to Super, basically swapping them:
+#    [Super][Alt][Space] => [Alt][Super][Space]
+# 3. Toggle between input languages with Alt+Space.
+
 input type:keyboard {
   repeat_rate 40
   repeat_delay 220
-
   xkb_layout "us,bg(phonetic)"
   xkb_variant ","
-
-  # 1. Caps Lock as Ctrl.
-  # 2. Super next to Space, and Alt next
-  #    to Super, basically swapping them:
-  #    [Super][Alt][Space] => [Alt][Super][Space]
-  # 3. Toggle between input languages with Alt+Space.
-
   xkb_options "ctrl:nocaps,altwin:swap_alt_win,grp:alt_space_toggle"
 }
 
@@ -156,16 +167,11 @@ input type:keyboard {
 focus_wrapping no
 focus_follows_mouse no
 default_border none
+
 gaps inner 8
 
-
-###############
-# Night Light #
-###############
-
-exec gammastep -O 5000
-
-
-############################
+#########
+# Other #
+#########
 
 include /etc/sway/config.d/*

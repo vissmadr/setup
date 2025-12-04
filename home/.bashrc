@@ -22,10 +22,8 @@ alias ..='cd ..'
 alias grep='grep --color=auto'
 alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first --icons --git'
 alias v='nvim'
-alias s='tmux'
 alias f='yazi'
 alias x='clear'
-alias lock='swaylock'
 
 # git
 g() {
@@ -73,11 +71,9 @@ export EXA_COLORS="da=2:uu=2:"
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 
+# nvim
+export EDITOR=nvim
+
 #########
 # Other #
 #########
-
-export EDITOR=nvim
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
