@@ -9,16 +9,14 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term foot
 set $menu wmenu-run
-
 
 ##########
 # Output #
 ##########
 
 output * bg #363636 solid_color
-
 
 ############
 # Keybinds #
@@ -97,7 +95,6 @@ mode "resize" {
   bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
-
 
 ##########
 # Volume #
