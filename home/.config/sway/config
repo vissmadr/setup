@@ -18,6 +18,16 @@ set $menu wmenu-run
 
 output * bg #363636 solid_color
 
+# # External monitor as main
+# output HDMI-A-1 {
+#     mode 2560x1440@144Hz
+#     position 0 0
+#     scale 1
+# }
+
+# # Disable laptop screen when lid closed
+# output eDP-1 disable
+
 ############
 # Keybinds #
 ############
@@ -39,7 +49,7 @@ bindsym $mod+c floating toggle; resize set width 60 ppt height 100 ppt; move pos
 bindsym $mod+f fullscreen
 
 bindsym $mod+Shift+z reload
-bindsym $mod+Shift+x exec swaynag -t warning -m 'Exit Sway and end Wayland session?.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+x exit
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -155,6 +165,7 @@ input type:keyboard {
   xkb_layout "us,bg(phonetic)"
   xkb_variant ","
   xkb_options "ctrl:nocaps,altwin:swap_alt_win,grp:alt_space_toggle"
+  # xkb_options "ctrl:nocaps,grp:alt_space_toggle"
 }
 
 ########

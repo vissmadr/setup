@@ -9,7 +9,7 @@ map("n", "<C-o>", "<C-i>", { noremap = true, silent = true })
 map("n", "<C-i>", "<C-o>", { noremap = true, silent = true })
 
 -- Terminal --
-map({ "n", "v" }, "<leader>f", "<cmd>terminal<CR>", { desc = "Terminal" })
+map({ "n", "v" }, "<leader>v", "<cmd>terminal<CR>", { desc = "Terminal" })
 map("t", "<C-a>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
 
 -- Splits --
@@ -18,10 +18,18 @@ map({ "n", "v" }, "<C-A-j>", "<C-w>-", { desc = "Decrease Height" })
 map({ "n", "v" }, "<C-A-k>", "<C-w>+", { desc = "Increase Height" })
 map({ "n", "v" }, "<C-A-l>", "<C-w>>", { desc = "Increase Width" })
 
+-- DAP --
+map("n", "<leader>fa", "<cmd>DapContinue<CR>", { desc = "Debug Continue" })
+map("n", "<leader>fs", "<cmd>DapTerminate<CR>", { desc = "Debug Terminate" })
+map("n", "<leader>fd", "<cmd>DapClearBreakpoints<CR>", { desc = "Debug Clear Breakpoints" })
+map("n", "<leader>ff", "<cmd>DapToggleBreakpoint<CR>", { desc = "Debug Toggle Breakpoint" })
+map("n", "<F10>", "<cmd>DapStepOver<CR>", { desc = "Debug Step Over" })
+map("n", "<F11>", "<cmd>DapStepInto<CR>", { desc = "Debug Step Into" })
+map("n", "<F12>", "<cmd>DapStepOut<CR>", { desc = "Debug Step Out" })
+
 -- Workspace --
 map({ "n", "v" }, "<leader>z", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
-map({ "n", "v" }, "<leader>x", "<cmd>set cursorline!<CR>", { desc = "Toggle Cursorline" })
-map({ "n", "v" }, "<leader>c", "<cmd>set wrap!<CR>", { desc = "Toggle Wrap" })
+map({ "n", "v" }, "<leader>x", "<cmd>set wrap!<CR>", { desc = "Toggle Wrap" })
 
 -- Telescope --
 map({ "n", "v" }, "<leader>q", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
