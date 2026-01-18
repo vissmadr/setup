@@ -179,16 +179,16 @@ u.setHL(0, "@comment", { fg = c.syntax.comment })
 u.cmd("hi! link @comment.documentation @comment")
 
 -- -- @comment.error: error-type comments (e.g. ERROR, FIXME, DEPRECATED)
-u.setHL(0, "@comment.error", { fg = c.ui.white, bg = c.diag.error })
+u.setHL(0, "@comment.error", { fg = c.diag.error, underline = true })
 
 -- -- @comment.warning: warning-type comments (e.g. WARNING, FIX, HACK)
-u.setHL(0, "@comment.warning", { fg = c.ui.black, bg = c.diag.warning })
+u.setHL(0, "@comment.warning", { fg = c.diag.warning, underline = true })
 
 -- @comment.todo: todo-type comments (e.g. TODO, WIP)
-u.setHL(0, "@comment.todo", { fg = c.ui.white, bg = c.diag.info })
+u.setHL(0, "@comment.todo", { fg = c.diag.info, underline = true })
 
 -- @comment.note: note-type comments (e.g. NOTE, INFO, XXX)
-u.setHL(0, "@comment.note", { fg = c.ui.black, bg = c.diag.hint })
+u.setHL(0, "@comment.note", { fg = c.diag.hint, underline = true })
 
 -- -- @diff.plus: added text (for diff files)
 -- u.setHL(0, "@diff.plus", { fg = c.vcs.added })

@@ -112,13 +112,13 @@ u.setHL(0, "Ignore", { fg = c.ui.nontext })
 u.setHL(0, "Error", { fg = c.diag.error })
 
 -- Todo: anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-u.setHL(0, "Todo", { fg = c.diag.info })
+u.setHL(0, "Todo", { fg = c.diag.info, underline = true })
 
 -- Added: added line in a diff
-u.setHL(0, "Added", { fg = c.vcs.added })
+u.setHL(0, "Added", { fg = c.vcs.added, underline = true })
 
 -- Changed: changed line in a diff
-u.setHL(0, "Changed", { fg = c.vcs.changed })
+u.setHL(0, "Changed", { fg = c.vcs.changed, underline = true })
 
 -- Removed: removed line in a diff
-u.setHL(0, "Removed", { fg = c.vcs.removed })
+u.setHL(0, "Removed", { fg = c.vcs.removed, underline = true })

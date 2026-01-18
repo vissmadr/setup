@@ -26,6 +26,7 @@ require("colors.highlights.lsp")
 require("colors.highlights.plugins")
 require("colors.highlights.diagnostics")
 require("colors.highlights.diff")
+require("colors.highlights.overwrites")
 require("colors.extra.aerial")
 
 require("lazy").setup({

@@ -26,7 +26,7 @@ o.cursorline = false          -- Show horizontal cursor line.
 o.cursorcolumn = false        -- Show vertical cursor column.
 o.wrap = false                -- Word wrap.
 
--- o.timeoutlen = 500;           -- Wait delay for key combinations.
+-- o.timeoutlen = 0;             -- Wait delay for key combinations.
 
 -- o.mouse = "a"                 -- Enable mouse support in all modes.
 
@@ -44,7 +44,7 @@ o.termguicolors = true        -- Enable 24-bit RGB colors.
 
 vim.opt.shortmess:append("I") -- Disable welcome message.
 
--- vim.opt.iskeyword:remove("_") -- Treat "_" as a symbol.
+vim.opt.iskeyword:remove("_") -- Treat "_" as a symbol.
 
 vim.opt.fillchars:append({    -- Remove fold fillchars
   fold = " "
