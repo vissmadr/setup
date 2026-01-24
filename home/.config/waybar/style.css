@@ -17,15 +17,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -80,10 +71,6 @@ button:hover {
 
 #clock,
 #battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
 #backlight,
 #network,
 #pulseaudio,
@@ -118,7 +105,7 @@ button:hover {
 }
 
 #battery {
-    background-color: #DCD7BA;
+    background-color: #c8c093;
     color: #000000;
 }
 
@@ -127,39 +114,13 @@ button:hover {
     background-color: #76946A;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #E82424;
+    background-color: #c34043;
     color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 label:focus {
     background-color: #000000;
-}
-
-#cpu {
-    background-color: #98BB6C;
-    color: #000000;
-}
-
-#memory {
-    background-color: #7E9CD8;
-}
-
-#disk {
-    background-color: #FFA066;
 }
 
 #backlight {
@@ -167,7 +128,7 @@ label:focus {
 }
 
 #network {
-    background-color: #7FB4CA;
+    background-color: #7e9cd8;
 }
 
 #network.disconnected {
@@ -205,14 +166,6 @@ label:focus {
 
 #custom-media.custom-vlc {
     background-color: #FF9E3B;
-}
-
-#temperature {
-    background-color: #FF9E3B;
-}
-
-#temperature.critical {
-    background-color: #E82424;
 }
 
 #tray {

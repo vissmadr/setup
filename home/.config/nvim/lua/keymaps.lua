@@ -1,3 +1,5 @@
+-- TODO(Opencode): Try with `s` or `c` maybe?
+
 local map = vim.keymap.set
 
 -- Leader --
@@ -26,6 +28,21 @@ map("n", "<leader>ff", "<cmd>DapToggleBreakpoint<CR>", { desc = "Debug Toggle Br
 map("n", "<F10>", "<cmd>DapStepOver<CR>", { desc = "Debug Step Over" })
 map("n", "<F11>", "<cmd>DapStepInto<CR>", { desc = "Debug Step Into" })
 map("n", "<F12>", "<cmd>DapStepOut<CR>", { desc = "Debug Step Out" })
+
+-- AI --
+map({ "n", "x" }, "<leader>ca", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
+map({ "n", "x" }, "<leader>cs", function() require("opencode").select() end, { desc = "Execute opencode action…" })
+map({ "n", "t" }, "<leader>cd", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+
+map({ "n", "x" }, "<leader>cf",  function() return require("opencode").operator("@this ") end, { desc = "Add range to opencode", expr = true })
+map("n",          "<leader>cg", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
+
+map("n", "<leader>ck", function() require("opencode").command("session.half.page.up") end, { desc = "Scroll opencode up" })
+map("n", "<leader>cj", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })
+
+-- Remapped increment/decrement (since <C-a> and <C-x> are used above)
+map("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+map("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
 
 -- Workspace --
 map({ "n", "v" }, "<leader>z", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
