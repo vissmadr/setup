@@ -43,22 +43,24 @@ map({ "n", "v" }, "<leader>s", "<cmd>AerialOpen float<CR>", { desc = "Aerial" })
 -- Telescope --
 map({ "n", "v" }, "<leader>q", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 map({ "n", "v" }, "<leader>w", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
-map({ "n", "v" }, "<leader>e", "<cmd>Telescope oldfiles<CR>", { desc = "Recent" })
-map({ "n", "v" }, "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Registers" })
+map({ "n", "v" }, "<leader>e", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
+map({ "n", "v" }, "<leader>r", "<cmd>Telescope oldfiles<CR>", { desc = "Recent" })
 map({ "n", "v" }, "<leader>t", "<cmd>Telescope<CR>", { desc = "Telescope" })
 
 -- Diffview --
-map({"n", "v"}, "<leader>ff", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview File History" })
-map({"n", "v"}, "<leader>fa", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
+map({"n", "v"}, "<leader>ff", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
+map({"n", "v"}, "<leader>fd", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview File History" })
 map({"n", "v"}, "<leader>fq", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
+map({"n", "v"}, "<leader>fc", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
 
 -- LSP Target --
-map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })
-map({ "n", "v" }, "<leader>ds", "<cmd>Telescope lsp_references<CR>", { desc = "References" })
 map({ "n", "v" }, "<leader>dd", vim.diagnostic.open_float, { desc = "Diagnostic" })
-map({ "n", "v" }, "<leader>da", vim.lsp.buf.code_action, { desc = "Code Action" })
-map({ "n", "v" }, "<leader>dr", vim.lsp.buf.rename, { desc = "Rename" })
-map({ "n", "v" }, "<leader>df", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
+map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })
+map({ "n", "v" }, "<leader>dw", "<cmd>Telescope lsp_references<CR>", { desc = "References" })
+map({ "n", "v" }, "<leader>de", vim.lsp.buf.rename, { desc = "Rename" })
+map({ "n", "v" }, "<leader>dr", vim.lsp.buf.code_action, { desc = "Code Action" })
+
+-- LSP Global --
 map({ "n", "v" }, "<leader>d=", function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = "Format" })
