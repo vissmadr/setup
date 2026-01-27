@@ -1,10 +1,11 @@
--- TODO(Opencode): Try with `s` or `c` maybe?
-
 local map = vim.keymap.set
 
--- Leader --
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+----------------------------
+---------- EDITOR ----------
+----------------------------
 
 -- Previous --
 map("n", "<C-o>", "<C-i>", { noremap = true, silent = true })
@@ -20,33 +21,24 @@ map({ "n", "v" }, "<C-A-j>", "<C-w>-", { desc = "Decrease Height" })
 map({ "n", "v" }, "<C-A-k>", "<C-w>+", { desc = "Increase Height" })
 map({ "n", "v" }, "<C-A-l>", "<C-w>>", { desc = "Increase Width" })
 
--- DAP --
-map("n", "<leader>fa", "<cmd>DapContinue<CR>", { desc = "Debug Continue" })
-map("n", "<leader>fs", "<cmd>DapTerminate<CR>", { desc = "Debug Terminate" })
-map("n", "<leader>fd", "<cmd>DapClearBreakpoints<CR>", { desc = "Debug Clear Breakpoints" })
-map("n", "<leader>ff", "<cmd>DapToggleBreakpoint<CR>", { desc = "Debug Toggle Breakpoint" })
-map("n", "<F10>", "<cmd>DapStepOver<CR>", { desc = "Debug Step Over" })
-map("n", "<F11>", "<cmd>DapStepInto<CR>", { desc = "Debug Step Into" })
-map("n", "<F12>", "<cmd>DapStepOut<CR>", { desc = "Debug Step Out" })
-
--- AI --
-map({ "n", "x" }, "<leader>ca", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
-map({ "n", "x" }, "<leader>cs", function() require("opencode").select() end, { desc = "Execute opencode action…" })
-map({ "n", "t" }, "<leader>cd", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
-
-map({ "n", "x" }, "<leader>cf",  function() return require("opencode").operator("@this ") end, { desc = "Add range to opencode", expr = true })
-map("n",          "<leader>cg", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
-
-map("n", "<leader>ck", function() require("opencode").command("session.half.page.up") end, { desc = "Scroll opencode up" })
-map("n", "<leader>cj", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })
-
--- Remapped increment/decrement (since <C-a> and <C-x> are used above)
-map("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
-map("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
-
 -- Workspace --
 map({ "n", "v" }, "<leader>z", "<cmd>set nu!<CR>", { desc = "Toggle Numbers" })
 map({ "n", "v" }, "<leader>x", "<cmd>set wrap!<CR>", { desc = "Toggle Wrap" })
+
+
+-----------------------------
+---------- PLUGINS ----------
+-----------------------------
+
+-- Leap --
+map({ "n", "x", "o" }, "s", "<Plug>(leap)")
+map("n", "S", "<Plug>(leap-from-window)")
+
+-- Oil --
+map({ "n", "v" }, "<leader>a", "<cmd>Oil<CR>", { desc = "Oil" })
+
+-- Aerial --
+map({ "n", "v" }, "<leader>s", "<cmd>AerialOpen float<CR>", { desc = "Aerial" })
 
 -- Telescope --
 map({ "n", "v" }, "<leader>q", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
@@ -55,13 +47,10 @@ map({ "n", "v" }, "<leader>e", "<cmd>Telescope oldfiles<CR>", { desc = "Recent" 
 map({ "n", "v" }, "<leader>r", "<cmd>Telescope registers<CR>", { desc = "Registers" })
 map({ "n", "v" }, "<leader>t", "<cmd>Telescope<CR>", { desc = "Telescope" })
 
--- Leap --
-map({ "n", "x", "o" }, "s", "<Plug>(leap)")
-map("n", "S", "<Plug>(leap-from-window)")
-
--- Explorers --
-map({ "n", "v" }, "<leader>a", "<cmd>Oil<CR>", { desc = "Oil" })
-map({ "n", "v" }, "<leader>s", "<cmd>AerialOpen float<CR>", { desc = "Aerial" })
+-- Diffview --
+map({"n", "v"}, "<leader>ff", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview File History" })
+map({"n", "v"}, "<leader>fa", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
+map({"n", "v"}, "<leader>fq", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
 
 -- LSP Target --
 map({ "n", "v" }, "<leader>dq", "<cmd>Telescope lsp_definitions<CR>", { desc = "Definition" })
@@ -74,16 +63,22 @@ map({ "n", "v" }, "<leader>d=", function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = "Format" })
 
+-- DAP --
+map("n", "<leader>ba", "<cmd>DapContinue<CR>", { desc = "Debug Continue" })
+map("n", "<leader>bs", "<cmd>DapTerminate<CR>", { desc = "Debug Terminate" })
+map("n", "<leader>bd", "<cmd>DapClearBreakpoints<CR>", { desc = "Debug Clear Breakpoints" })
+map("n", "<leader>bf", "<cmd>DapToggleBreakpoint<CR>", { desc = "Debug Toggle Breakpoint" })
+map("n", "<F10>", "<cmd>DapStepOver<CR>", { desc = "Debug Step Over" })
+map("n", "<F11>", "<cmd>DapStepInto<CR>", { desc = "Debug Step Into" })
+map("n", "<F12>", "<cmd>DapStepOut<CR>", { desc = "Debug Step Out" })
+
 -- Obsidian --
 map({ "n", "v" }, "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Open" })
 map({ "n", "v" }, "<leader>oh", "<cmd>ObsidianCheck<cr>", { desc = "Health" })
-
 map({ "n", "v" }, "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "New" })
 map({ "n", "v" }, "<leader>or", "<cmd>ObsidianRename<cr>", { desc = "Rename" })
 map({ "n", "v" }, "<leader>ot", "<cmd>ObsidianTemplate<cr>", { desc = "Template" })
-
 map({ "n", "v" }, "<leader>oe", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Files" })
 map({ "n", "v" }, "<leader>ow", "<cmd>ObsidianSearch<cr>", { desc = "Search" })
-
 map({ "n", "v" }, "<leader>ol", "<cmd>ObsidianLinks<cr>", { desc = "Links" })
 map({ "n", "v" }, "<leader>ob", "<cmd>ObsidianBacklinks<cr>", { desc = "Backlinks" })
