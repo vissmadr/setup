@@ -51,7 +51,6 @@ map({ "n", "v" }, "<leader>t", "<cmd>Telescope<CR>", { desc = "Telescope" })
 map({"n", "v"}, "<leader>ff", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
 map({"n", "v"}, "<leader>fd", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview File History" })
 map({"n", "v"}, "<leader>fq", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
-map({"n", "v"}, "<leader>fc", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
 
 -- LSP Target --
 map({ "n", "v" }, "<leader>dd", vim.diagnostic.open_float, { desc = "Diagnostic" })
