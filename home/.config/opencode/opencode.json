@@ -1,13 +1,4 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "plugin": ["opencode-anthropic-auth"],
-  "keybinds": {
-    "app_exit": "ctrl+c,<leader>q",
-    "messages_half_page_up": "ctrl+u",
-    "messages_half_page_down": "ctrl+d",
-    "messages_copy": "ctrl+y,<leader>y",
-    "input_backspace": "ctrl+h,backspace,shift+backspace",
-    "input_delete": "delete,shift+delete",
-    "editor_open": "ctrl+e"
-  }
 }
