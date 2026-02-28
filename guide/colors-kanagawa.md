@@ -1,4 +1,6 @@
 Black:
+    "#202020": background0
+    "#202026": background1
     "#16161D": sumiInk0
     "#181820": sumiInk1
     "#1A1A22": sumiInk2

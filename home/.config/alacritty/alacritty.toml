@@ -17,7 +17,7 @@ decorations = "None"
 
 [colors.primary]
 foreground = "0xc8c093"
-background = "0x202020"
+background = "0x202026"
 
 [colors.normal]
 black   = "0x16161d"
