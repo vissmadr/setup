@@ -1,75 +1,29 @@
--- https://neovim.io/doc/user/lsp.html
+-- LSP semantic token highlights.
+-- These link to treesitter groups so LSP tokens get consistent colors.
 
-local u = require("colors/utilities")
+return {
+  ["@lsp.type.class"]      = { link = "@type" },
+  ["@lsp.type.comment"]    = { link = "@comment" },
+  ["@lsp.type.decorator"]  = { link = "@attribute" },
+  ["@lsp.type.enum"]       = { link = "@type" },
+  ["@lsp.type.enumMember"] = { link = "@constant" },
+  ["@lsp.type.function"]   = { link = "@function" },
+  ["@lsp.type.interface"]  = { link = "@type" },
+  ["@lsp.type.keyword"]    = { link = "@keyword" },
+  ["@lsp.type.macro"]      = { link = "@constant.macro" },
+  ["@lsp.type.method"]     = { link = "@function.method" },
+  ["@lsp.type.modifier"]   = { link = "@keyword.modifier" },
+  ["@lsp.type.namespace"]  = { link = "@module" },
+  ["@lsp.type.number"]     = { link = "@number" },
+  ["@lsp.type.operator"]   = { link = "@operator" },
+  ["@lsp.type.parameter"]  = { link = "@variable.parameter" },
+  ["@lsp.type.property"]   = { link = "@property" },
+  ["@lsp.type.regexp"]     = { link = "@string.regexp" },
+  ["@lsp.type.string"]     = { link = "@string" },
+  ["@lsp.type.struct"]     = { link = "@type" },
+  ["@lsp.type.type"]       = { link = "@type" },
+  ["@lsp.type.variable"]   = { link = "@variable" },
 
--- @lsp.type.class: Identifiers that declare or reference a class type
-u.cmd("hi! link @lsp.type.class @type")
-
--- @lsp.type.comment: Tokens that represent a comment
-u.cmd("hi! link @lsp.type.comment @comment")
-
--- @lsp.type.decorator: Identifiers that declare or reference decorators and annotations
-u.cmd("hi! link @lsp.type.decorator @attribute")
-
--- @lsp.type.enum: Identifiers that declare or reference an enumeration type
-u.cmd("hi! link @lsp.type.enum @type")
-
--- @lsp.type.enumMember: Identifiers that declare or reference an enumeration property, constant, or member
-u.cmd("hi! link @lsp.type.enumMember @constant")
-
--- -- @lsp.type.event: Identifiers that declare an event property
--- @lsp.type.event
-
--- @lsp.type.function: Identifiers that declare a function
-u.cmd("hi! link @lsp.type.function @function")
-
--- @lsp.type.interface: Identifiers that declare or reference an interface type
-u.cmd("hi! link @lsp.type.interface @type")
-
--- @lsp.type.keyword: Tokens that represent a language keyword
-u.cmd("hi! link @lsp.type.keyword @keyword")
-
--- @lsp.type.macro: Identifiers that declare a macro
-u.cmd("hi! link @lsp.type.macro @constant.macro")
-
--- @lsp.type.method: Identifiers that declare a member function or method
-u.cmd("hi! link @lsp.type.method @function.method")
-
--- @lsp.type.modifier: Tokens that represent a modifier
-u.cmd("hi! link @lsp.type.modifier @keyword.modifier")
-
--- @lsp.type.namespace: Identifiers that declare or reference a namespace, module, or package
-u.cmd("hi! link @lsp.type.namespace @module")
-
--- @lsp.type.number: Tokens that represent a number literal
-u.cmd("hi! link @lsp.type.number @number")
-
--- @lsp.type.operator: Tokens that represent an operator
-u.cmd("hi! link @lsp.type.operator @operator")
-
--- @lsp.type.parameter: Identifiers that declare or reference a function or method parameters
-u.cmd("hi! link @lsp.type.parameter @variable.parameter")
-
--- @lsp.type.property: Identifiers that declare or reference a member property, member field, or member variable
-u.cmd("hi! link @lsp.type.property @property")
-
--- @lsp.type.regexp: Tokens that represent a regular expression literal
-u.cmd("hi! link @lsp.type.regexp @string.regexp")
-
--- @lsp.type.string: Tokens that represent a string literal
-u.cmd("hi! link @lsp.type.string @string")
-
--- @lsp.type.struct: Identifiers that declare or reference a struct type
-u.cmd("hi! link @lsp.type.struct @type")
-
--- @lsp.type.type: Identifiers that declare or reference a type that is not covered above
-u.cmd("hi! link @lsp.type.type @type")
-
--- -- @lsp.type.typeParameter: Identifiers that declare or reference a type parameter
--- @lsp.type.typeParameter
-
--- @lsp.type.variable: Identifiers that declare or reference a local or global variable
-u.cmd("hi! link @lsp.type.variable @variable")
-
--- -- @lsp.mod.abstract: Types and member functions that are abstract @lsp.mod.async Functions that are marked async @lsp.mod.declaration Declarations of symbols @lsp.mod.defaultLibrary Symbols that are part of the standard library @lsp.mod.definition Definitions of symbols, for example, in header files @lsp.mod.deprecated Symbols that should no longer be used @lsp.mod.documentation Occurrences of symbols in documentation @lsp.mod.modification Variable references where the variable is assigned to @lsp.mod.readonly Readonly variables and member fields (constants) @lsp.mod.static Class members (static members) 
--- @lsp.mod.abstract
+  -- Per-language overrides
+  ["@lsp.type.comment.zig"] = {}, -- Disable: let treesitter handle Zig comments
+}

@@ -1,28 +1,23 @@
-local c = require("colors/colors")
-local u = require("colors/utilities")
+local t = require("colors.theme")
 
-u.setHL(0, "@diff.plus",  { fg = c.vcs.added })
-u.setHL(0, "@diff.minus", { fg = c.vcs.removed })
-u.setHL(0, "@diff.delta", { fg = c.vcs.changed })
+return {
+  -- Treesitter diff captures
+  ["@diff.plus"]  = { fg = t.vcs.added },
+  ["@diff.minus"] = { fg = t.vcs.removed },
+  ["@diff.delta"] = { fg = t.vcs.changed },
 
-u.setHL(0, "diffNewFile", { fg = c.vcs.added })
-u.setHL(0, "diffOldFile", { fg = c.vcs.removed })
-u.setHL(0, "diffChanged", { fg = c.vcs.changed })
-u.setHL(0, "diffDeleted", { fg = c.vcs.removed })
-u.setHL(0, "diffRemoved", { fg = c.vcs.removed })
-u.setHL(0, "diffAdded",   { fg = c.vcs.added })
+  -- Legacy diff syntax
+  diffNewFile = { fg = t.vcs.added },
+  diffOldFile = { fg = t.vcs.removed },
+  diffChanged = { fg = t.vcs.changed },
+  diffDeleted = { fg = t.vcs.removed },
+  diffRemoved = { fg = t.vcs.removed },
+  diffAdded   = { fg = t.vcs.added },
 
--- 	DiffAdd: Diff mode: Added line. diff.txt
-u.setHL(0, "DiffAdd", { bg = c.diff.add })
-
--- DiffChange: Diff mode: Changed line. diff.txt
-u.setHL(0, "DiffChange", { bg = c.diff.change })
-
--- DiffDelete: Diff mode: Deleted line. diff.txt
-u.setHL(0, "DiffDelete", { fg = c.vcs.removed, bg = c.diff.delete })
-
--- DiffText: Diff mode: Changed text within a changed line. diff.txt
-u.setHL(0, "DiffText", { bg = c.diff.text })
-
--- DiffTextAdd: Diff mode: Added text within a changed line.  Linked to hl-DiffText by default. diff.txt
-u.cmd("hi! link DiffTextAdd DiffText")
+  -- Diff mode backgrounds
+  DiffAdd     = { bg = t.diff.add },
+  DiffChange  = { bg = t.diff.change },
+  DiffDelete  = { fg = t.vcs.removed, bg = t.diff.delete },
+  DiffText    = { bg = t.diff.text },
+  DiffTextAdd = { link = "DiffText" },
+}

@@ -18,16 +18,7 @@ require("settings")
 require("keymaps")
 require("autocommands")
 
-require("colors.highlights.editor")
-require("colors.highlights.syntax")
-require("colors.highlights.treesitter")
-require("colors.highlights.treesitter-markdown")
-require("colors.highlights.lsp")
-require("colors.highlights.plugins")
-require("colors.highlights.diagnostics")
-require("colors.highlights.diff")
-require("colors.highlights.overwrites")
-require("colors.extra.aerial")
+require("colors")
 
 require("lazy").setup({
   { import = "plugins" },
