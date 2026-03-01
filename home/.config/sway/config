@@ -17,7 +17,7 @@ set $menu wmenu-run
 ##########
 
 # output * bg #363636 solid_color
-output * bg ~/Pictures/backgrounds/tenthousand-darker60.png fill
+output * bg ~/Pictures/backgrounds/background.png fill
 
 # # External monitor as main
 # output HDMI-A-1 {
@@ -198,7 +198,7 @@ focus_wrapping no
 focus_follows_mouse no
 default_border none
 
-gaps inner 8
+gaps inner 6
 
 #########
 # Other #

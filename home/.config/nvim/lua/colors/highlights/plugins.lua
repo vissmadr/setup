@@ -15,7 +15,7 @@ return {
   -- Aerial
   AerialLine     = { bg = t.ui.bg_cursorline },
   AerialClass    = { link = "@type" },
-  AerialEnum     = { link = "@type" },
+  AerialEnum     = { link = "@number" },
   AerialStruct   = { link = "@type" },
   AerialModule   = { link = "@module" },
   AerialFunction = { link = "@function" },

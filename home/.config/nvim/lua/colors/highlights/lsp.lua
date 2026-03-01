@@ -6,7 +6,7 @@ return {
   ["@lsp.type.comment"]    = { link = "@comment" },
   ["@lsp.type.decorator"]  = { link = "@attribute" },
   ["@lsp.type.enum"]       = { link = "@type" },
-  ["@lsp.type.enumMember"] = { link = "@constant" },
+  ["@lsp.type.enumMember"] = { link = "@number" },
   ["@lsp.type.function"]   = { link = "@function" },
   ["@lsp.type.interface"]  = { link = "@type" },
   ["@lsp.type.keyword"]    = { link = "@keyword" },

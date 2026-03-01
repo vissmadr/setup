@@ -7,16 +7,16 @@ local p = require("colors.palette")
 return {
   ui = {
     -- Foregrounds
-    fg         = p.oldWhite,       -- Default text (Normal)
-    fg_bright  = p.fujiWhite,      -- Brighter text (variables, pmenu items)
+    fg         = p.vissWhite,      -- Default text (Normal)
+    fg_bright  = p.vissWhite2,     -- Brighter text (variables, pmenu items)
     fg_reverse = p.waveBlue1,      -- Dark fg for light backgrounds
 
     -- Backgrounds
-    bg_dark    = p.sumiInk0,       -- Darkest: floats, sidebars
-    bg_dim     = p.sumiInk1,       -- Dim background
-    bg         = p.sumiInk3,       -- Main editor background
-    bg_gutter  = p.sumiInk4,       -- Gutter, status line
-    bg_cursorline = p.sumiInk5,    -- Cursor line, column highlights
+    bg_dark       = p.dragonBlack0,    -- Darkest: floats, sidebars
+    bg_dim        = p.dragonBlack1,    -- Dim background
+    bg            = p.dragonBlack3,    -- Main editor background
+    bg_gutter     = p.dragonBlack4,    -- Gutter, status line
+    bg_cursorline = p.dragonBlack5,    -- Cursor line, column highlights
 
     -- Selection & search
     bg_search  = p.waveBlue2,
@@ -24,22 +24,22 @@ return {
 
     -- UI elements
     special    = p.springViolet1,   -- Folded text, conceal, titles
-    nontext    = p.sumiInk6,        -- Non-text chars, borders, whitespace
+    nontext    = p.dragonBlack6,        -- Non-text chars, borders, whitespace
     directory  = p.crystalBlue,
     more_msg   = p.dragonBlue,
     mode_msg   = p.roninYellow,     -- Also used for MatchParen, IncSearch
 
     -- Floating windows
     float = {
-      fg     = p.oldWhite,
-      bg     = p.sumiInk0,
-      border = p.sumiInk6,
+      fg     = p.vissWhite,
+      bg     = p.dragonBlack0,
+      border = p.dragonBlack6,
       title  = p.springViolet1,
     },
 
     -- Popup menu
     pmenu = {
-      fg       = p.fujiWhite,
+      fg       = p.vissWhite,
       bg       = p.waveBlue1,
       bg_sel   = p.waveBlue2,
       bg_sbar  = p.waveBlue1,
@@ -49,8 +49,8 @@ return {
 
   syntax = {
     -- Identifiers
-    variable    = p.fujiWhite,
-    constant    = p.fujiWhite,
+    variable    = p.vissWhite2,
+    constant    = p.vissWhite2,
     identifier  = p.carpYellow,
     property    = p.carpYellow,
     parameter   = p.oniViolet2,
@@ -87,17 +87,17 @@ return {
   },
 
   markdown = {
-    fg       = p.oldWhite,
-    heading  = p.roninYellow,
-    heading1 = p.roninYellow,
-    heading2 = p.roninYellow,
-    heading3 = p.surimiOrange,
-    heading4 = p.surimiOrange,
-    heading5 = p.surimiOrange,
-    heading6 = p.surimiOrange,
-    strong   = p.carpYellow,
-    italic   = p.carpYellow,
-    raw      = p.oniViolet2,
+    fg       = p.vissWhite,
+    heading  = p.carpYellow,
+    heading1 = p.carpYellow,
+    heading2 = p.carpYellow,
+    heading3 = p.carpYellow,
+    heading4 = p.carpYellow,
+    heading5 = p.carpYellow,
+    heading6 = p.carpYellow,
+    strong   = p.oldWhite,
+    italic   = p.oniViolet2,
+    raw      = p.boatYellow2,
     label    = p.oniViolet,
     link     = p.sakuraPink,
     quote    = p.springViolet2,
