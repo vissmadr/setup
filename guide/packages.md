@@ -26,6 +26,7 @@ btop
 imv
 mpv
 eza
+feh
 
 firefox
 obsidian
