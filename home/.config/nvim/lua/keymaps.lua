@@ -61,25 +61,5 @@ map({ "n", "v" }, "<leader>dr", vim.lsp.buf.code_action, { desc = "Code Action" 
 
 -- LSP Global --
 map({ "n", "v" }, "<leader>d=", function()
-	vim.lsp.buf.format({ async = true })
+	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format" })
-
--- DAP --
-map("n", "<leader>ba", "<cmd>DapContinue<CR>", { desc = "Debug Continue" })
-map("n", "<leader>bs", "<cmd>DapTerminate<CR>", { desc = "Debug Terminate" })
-map("n", "<leader>bd", "<cmd>DapClearBreakpoints<CR>", { desc = "Debug Clear Breakpoints" })
-map("n", "<leader>bf", "<cmd>DapToggleBreakpoint<CR>", { desc = "Debug Toggle Breakpoint" })
-map("n", "<F10>", "<cmd>DapStepOver<CR>", { desc = "Debug Step Over" })
-map("n", "<F11>", "<cmd>DapStepInto<CR>", { desc = "Debug Step Into" })
-map("n", "<F12>", "<cmd>DapStepOut<CR>", { desc = "Debug Step Out" })
-
--- Obsidian --
-map({ "n", "v" }, "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Open" })
-map({ "n", "v" }, "<leader>oh", "<cmd>ObsidianCheck<cr>", { desc = "Health" })
-map({ "n", "v" }, "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "New" })
-map({ "n", "v" }, "<leader>or", "<cmd>ObsidianRename<cr>", { desc = "Rename" })
-map({ "n", "v" }, "<leader>ot", "<cmd>ObsidianTemplate<cr>", { desc = "Template" })
-map({ "n", "v" }, "<leader>oe", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Files" })
-map({ "n", "v" }, "<leader>ow", "<cmd>ObsidianSearch<cr>", { desc = "Search" })
-map({ "n", "v" }, "<leader>ol", "<cmd>ObsidianLinks<cr>", { desc = "Links" })
-map({ "n", "v" }, "<leader>ob", "<cmd>ObsidianBacklinks<cr>", { desc = "Backlinks" })

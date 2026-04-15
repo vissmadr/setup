@@ -20,4 +20,14 @@ return {
   AerialModule   = { link = "@module" },
   AerialFunction = { link = "@function" },
   AerialMethod   = { link = "@function.method" },
+
+  -- Gitsigns
+  -- Set these explicitly so the signcolumn bars don't inherit the `underline`
+  -- from the legacy `Added` / `Changed` / `Removed` groups in syntax.lua.
+  GitSignsAdd          = { fg = t.vcs.added },
+  GitSignsChange       = { fg = t.vcs.changed },
+  GitSignsDelete       = { fg = t.vcs.removed },
+  GitSignsTopdelete    = { fg = t.vcs.removed },
+  GitSignsChangedelete = { fg = t.vcs.changed },
+  GitSignsUntracked    = { fg = t.ui.nontext },
 }

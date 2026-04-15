@@ -46,27 +46,10 @@ return {
     end,
   },
 
+  -- Provides default LSP configs under lsp/*.lua which vim.lsp.enable() reads.
   {
     "neovim/nvim-lspconfig",
-
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
-
-    -- config = function()
-    --   local lspconfig = require('lspconfig')
-    --   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    --
-    --   -- Godot LSP configuration
-    --   lspconfig.gdscript.setup({
-    --     cmd = { os.getenv("HOME") .. "/.local/bin/godot", "--lsp" },
-    --     filetypes = { "gd", "gdscript", "gdscript3" },
-    --     root_dir = lspconfig.util.root_pattern("project.godot", ".git"),
-    --     capabilities = capabilities,
-    --   })
-    -- end
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
   },
 
   {
@@ -79,32 +62,34 @@ return {
   },
 
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
 
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    dependencies = {
+      "mason-org/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+    },
 
     config = function()
       require("mason").setup()
-      local mason_lspconfig = require("mason-lspconfig")
 
-      mason_lspconfig.setup({
-        automatic_installation = false,
+      -- Apply nvim-cmp capabilities to every server.
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
+
+      require("mason-lspconfig").setup({
+        -- mason-lspconfig v2: auto-calls vim.lsp.enable() for installed servers.
+        -- Set to a list of names to restrict, or `false` to disable entirely.
+        automatic_enable = true,
+      })
+
+      -- Godot LSP (not installable via Mason).
+      vim.lsp.config("gdscript", {
+        cmd = { os.getenv("HOME") .. "/.local/bin/godot", "--lsp" },
+        filetypes = { "gd", "gdscript", "gdscript3" },
+        root_markers = { "project.godot", ".git" },
+      })
+      vim.lsp.enable("gdscript")
     end,
   },
-
-  {
-    "nvimtools/none-ls.nvim",
-
-    config = function()
-      local null_ls = require("null-ls")
-
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.prettier,
-        },
-      })
-    end,
-  }
 }

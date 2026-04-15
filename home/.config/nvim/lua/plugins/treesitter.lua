@@ -1,58 +1,40 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-
-  branch = 'master',
-
-  dependencies = { "windwp/nvim-ts-autotag" },
-
+  branch = "main",
   lazy = false,
-
   build = ":TSUpdate",
-
   config = function()
-    require("nvim-treesitter.configs").setup({
-      auto_install = true,
+    local ts = require("nvim-treesitter")
 
-      ensure_installed = {
-        "c",
-        "cpp",
+    ts.setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
 
-        "bash",
-        "diff",
+    -- Main branch no longer auto-registers filetype -> parser aliases.
+    -- Register the ones where the filetype name differs from the parser name.
+    vim.treesitter.language.register("tsx",        "typescriptreact")
+    vim.treesitter.language.register("javascript", "javascriptreact")
+    vim.treesitter.language.register("bash",       "sh")
 
-        "lua",
-        "vim",
-        "vimdoc",
+    -- Declarative parser install list. Run :TSUpdate after editing.
+    ts.install({
+      "bash", "c", "cpp", "css", "diff", "glsl", "hlsl", "html",
+      "javascript", "json", "lua", "markdown", "markdown_inline",
+      "query", "sql", "toml", "tsx", "typescript", "vim", "vimdoc",
+      "yaml",
+    })
 
-        "query",
-        "sql",
-
-        "markdown",
-        "markdown_inline",
-
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "jsdoc",
-
-        "json",
-        "csv",
-        "yaml",
-        "toml",
-
-        "glsl",
-        "hlsl",
-
-        "comment",
+    -- Enable highlighting for these filetypes.
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = {
+        "bash", "c", "cpp", "css", "diff", "glsl", "hlsl", "html",
+        "javascript", "javascriptreact", "json", "lua", "markdown",
+        "query", "sh", "sql", "toml", "tsx", "typescript",
+        "typescriptreact", "vim", "yaml",
       },
-
-      ignore_install = { },
-
-      highlight = {
-        enable = true
-      },
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
     })
   end,
 }

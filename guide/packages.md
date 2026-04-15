@@ -19,6 +19,7 @@ nodejs
 python
 ruby
 
+zoxide
 yazi
 less
 tldr

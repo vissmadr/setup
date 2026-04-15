@@ -19,7 +19,7 @@ M.theme = {
   command = {
     a = { bg = p.dragonBlue2,  fg = p.background },
     b = { bg = p.winterBlue,   fg = p.dragonBlue2 },
-    c = { bg = p.background,     fg = p.fujiWhite },
+    c = { bg = p.background,     fg = p.vissWhite },
   },
   replace = {
     a = { bg = p.waveAqua1, fg = p.background },
