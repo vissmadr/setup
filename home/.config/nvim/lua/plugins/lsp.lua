@@ -82,14 +82,6 @@ return {
         -- Set to a list of names to restrict, or `false` to disable entirely.
         automatic_enable = true,
       })
-
-      -- Godot LSP (not installable via Mason).
-      vim.lsp.config("gdscript", {
-        cmd = { os.getenv("HOME") .. "/.local/bin/godot", "--lsp" },
-        filetypes = { "gd", "gdscript", "gdscript3" },
-        root_markers = { "project.godot", ".git" },
-      })
-      vim.lsp.enable("gdscript")
     end,
   },
 }
