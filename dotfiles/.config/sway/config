@@ -1,0 +1,207 @@
+#############
+# Variables #
+#############
+
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term foot
+set $menu wmenu-run
+
+##########
+# Output #
+##########
+
+# output * bg #363636 solid_color
+output * bg ~/Pictures/backgrounds/background.png fill
+
+# # External monitor as main
+# output HDMI-A-1 {
+#     mode 2560x1440@144Hz
+#     position 0 0
+#     scale 1
+# }
+
+# # Disable laptop screen when lid closed
+# output eDP-1 disable
+
+############
+# Keybinds #
+############
+
+bindsym $mod+Return exec $term
+bindsym $mod+w exec $term
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+q exec $menu
+
+bindsym $mod+v splith
+bindsym $mod+s splitv
+
+bindsym $mod+t layout stacking
+bindsym $mod+g layout toggle split
+
+bindsym $mod+c floating toggle; resize set width 60 ppt height 100 ppt; move position center
+bindsym $mod+f fullscreen
+
+bindsym $mod+Shift+z reload
+bindsym $mod+Shift+x exit
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+set $ws11 11F
+set $ws12 12F
+set $ws13 13F
+set $ws14 14F
+set $ws15 15F
+set $ws16 16F
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+f1 workspace $ws11
+bindsym $mod+f2 workspace $ws12
+bindsym $mod+f3 workspace $ws13
+bindsym $mod+f4 workspace $ws14
+bindsym $mod+f5 workspace $ws15
+bindsym $mod+f6 workspace $ws16
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+f1 move container to workspace $ws11
+bindsym $mod+Shift+f2 move container to workspace $ws12
+bindsym $mod+Shift+f3 move container to workspace $ws13
+bindsym $mod+Shift+f4 move container to workspace $ws14
+bindsym $mod+Shift+f5 move container to workspace $ws15
+bindsym $mod+Shift+f6 move container to workspace $ws16
+
+mode "resize" {
+  bindsym $left resize shrink width 20px
+  bindsym $down resize grow height 20px
+  bindsym $up resize shrink height 20px
+  bindsym $right resize grow width 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+##########
+# Volume #
+##########
+
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
+##############
+# Brightness #
+##############
+
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 2%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 2%+
+
+##############
+# Screenshot #
+##############
+
+# bindsym $mod+m exec grim -g "$(slurp)" ~/Pictures/screenshots/$(date +'%Y%m%d-%H%M%S').png
+# bindsym $mod+Shift+m exec grim ~/Pictures/screenshots/$(date +'%Y%m%d-%H%M%S').png
+
+bindsym $mod+m exec sh -c 'grim -g "$(slurp)" - | tee ~/Pictures/screenshots/$(date +'%Y%m%d-%H%M%S').png | wl-copy'
+bindsym $mod+Shift+m exec sh -c 'grim - - | tee ~/Pictures/screenshots/$(date +'%Y%m%d-%H%M%S').png | wl-copy'
+
+#############
+# Recording #
+#############
+
+bindsym $mod+n exec wf-recorder -g "$(slurp)" -f ~/Videos/screencasts/$(date +'%Y%m%d-%H%M%S').mp4
+bindsym $mod+Shift+n exec wf-recorder -f ~/Videos/screencasts/$(date +'%Y%m%d-%H%M%S').mp4
+bindsym $mod+b exec pkill -INT wf-recorder
+
+##############
+# Status Bar #
+##############
+
+exec waybar
+
+###############
+# Night Light #
+###############
+
+exec gammastep -O 5000
+
+#########
+# Input #
+#########
+
+# 1. Caps Lock as Ctrl.
+# 2. Super next to Space, and Alt next
+#    to Super, basically swapping them:
+#    [Super][Alt][Space] => [Alt][Super][Space]
+# 3. Toggle between input languages with Alt+Space.
+
+input type:keyboard {
+  repeat_rate 40
+  repeat_delay 220
+  xkb_layout "us,bg(phonetic)"
+  xkb_variant ","
+  xkb_options "ctrl:nocaps,altwin:swap_alt_win,grp:alt_space_toggle"
+  # xkb_options "ctrl:nocaps,grp:alt_space_toggle"
+}
+
+########
+# Misc #
+########
+
+focus_wrapping no
+focus_follows_mouse no
+default_border none
+
+gaps inner 6
+
+#########
+# Other #
+#########
+
+include /etc/sway/config.d/*

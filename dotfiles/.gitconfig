@@ -1,0 +1,9 @@
+[user]
+    ; name = NAME
+    ; email = MAIL@MAIL.MAIL
+
+[init]
+    defaultBranch = main
+
+[credential]
+    helper = store

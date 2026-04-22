@@ -1,7 +1,0 @@
-[opener]
-edit = [
-  { run = "nvim \"$1\"", desc = "Edit any file", block = true }
-]
-
-[mgr]
-show_hidden = true
