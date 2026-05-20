@@ -14,26 +14,27 @@ docs/
   ai/
     documentation-guide.md
     codestyle-main.md
-    codestyle-zig.md
-    codestyle-typescript.md
+    codestyle-<language>.md
     codestyle-project.md
   plans/
   superpowers/
     specs/
     plans/
+  human/
 ```
 
-Optional human-only notes may live under `docs/human/`. If that directory exists, AI assistants must not read, summarize, edit, or rely on it unless the user explicitly asks.
+Human-only notes live under `docs/human/`. AI assistants must ignore it completely.
 
 ## Copy Rules
 
 - Copy pure files verbatim. Do not modify them for a project.
 - Rewrite template files into their final project paths.
 - Keep `docs/ai/codestyle-main.md` as the general style baseline.
-- Keep the relevant main language codestyle file, such as `docs/ai/codestyle-zig.md` or `docs/ai/codestyle-typescript.md`.
+- Keep the relevant main language codestyle file, such as `docs/ai/codestyle-zig.md` or `docs/ai/codestyle-typescript.md`. Projects usually have one main programming language.
 - Always write `docs/ai/codestyle-project.md` from `docs/ai/codestyle-project-template.md`. It should start empty or nearly empty by default.
 - Keep `docs/plans/` for implementation plans and handoffs.
 - Keep `docs/superpowers/specs/` and `docs/superpowers/plans/` for Superpowers-generated specs and plans.
+- Keep `docs/human/` as human-only space.
 
 ## Pure Files
 
@@ -41,8 +42,7 @@ Copy these directly into the target project when relevant:
 
 - `docs/ai/documentation-guide.md`
 - `docs/ai/codestyle-main.md`
-- `docs/ai/codestyle-zig.md`
-- `docs/ai/codestyle-typescript.md`
+- one main language codestyle file, such as `docs/ai/codestyle-zig.md` or `docs/ai/codestyle-typescript.md`
 - `.gitkeep` placeholders under empty directories
 
 Do not edit pure files while applying the blueprint. If a pure file needs improvement, change it here in the blueprint source, then copy the improved version everywhere.
@@ -57,6 +57,8 @@ Rewrite these into final project files:
 Template files contain placeholders and blueprint notes. Remove all placeholders and template notes in the final project files.
 
 `codestyle-project.md` is always present in the final project, but it should usually be empty or very small. Add content only when the AI assistant or human identifies concrete project-specific exceptions, ownership rules, validation commands, config/resource rules, or architectural constraints that are not covered by `codestyle-main.md` and the language codestyle file.
+
+The final project should not contain `AGENTS-template.md`, `docs/ai/codestyle-project-template.md`, unused language codestyle files, or the `blueprint/` directory itself.
 
 ## How To Apply To A New Project
 
@@ -76,7 +78,7 @@ Template files contain placeholders and blueprint notes. Remove all placeholders
 - Preserve accurate project-specific rules.
 - Replace stale guidance with the blueprint structure only when it improves future AI sessions.
 - Do not edit pure copied files for one project. Put project-specific exceptions in `docs/ai/codestyle-project.md` or `AGENTS.md`.
-- Do not read human-only docs while migrating unless the user explicitly allows it.
+- Ignore human-only docs while migrating.
 
 ## Required Result
 

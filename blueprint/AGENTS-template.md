@@ -8,7 +8,7 @@ This is a blueprint template, not active project guidance. When applying the blu
 
 - Read `docs/ai/documentation-guide.md` before documentation work.
 - Read `docs/ai/codestyle-main.md` before non-trivial code changes.
-- Read the relevant language or project codestyle file before non-trivial code changes:
+- Read the relevant language codestyle file and project codestyle file before non-trivial code changes:
   - `docs/ai/codestyle-zig.md`
   - `docs/ai/codestyle-typescript.md`
   - `docs/ai/codestyle-project.md`
@@ -48,6 +48,7 @@ docs/
   superpowers/
     specs/                             -- Superpowers brainstorming specs
     plans/                             -- Superpowers implementation plans
+  human/                               -- human-only notes; AI assistants must ignore this directory
 src/                                   -- main source code
 ```
 
@@ -69,7 +70,7 @@ Update this inventory when files are added, removed, renamed, or responsibilitie
 - `docs/ai/` contains AI-maintained current-truth documentation.
 - `docs/plans/` contains active plans and handoffs, not canonical implemented behavior.
 - `docs/superpowers/` contains Superpowers-generated specs and plans.
-- If `docs/human/` exists, it is human-only. AI assistants must not read, summarize, edit, or rely on it unless explicitly asked.
+- `docs/human/` is human-only. AI assistants must ignore it completely.
 - Prefer current source code, config, manifests, and scripts over stale prose.
 
 ## Important

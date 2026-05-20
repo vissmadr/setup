@@ -13,7 +13,7 @@ Documentation exists to make future work faster and safer. It should describe th
 - `docs/plans/` contains active plans, handoffs, checklists, and task sequencing.
 - `docs/superpowers/specs/` contains Superpowers brainstorming specs.
 - `docs/superpowers/plans/` contains Superpowers implementation plans.
-- `docs/human/`, when present, is human-only and must be ignored unless the user explicitly allows it.
+- `docs/human/` is human-only and must be ignored completely.
 
 ## Source Of Truth Order
 
@@ -91,7 +91,7 @@ Plans are not canonical documentation for implemented behavior. When a plan is i
 
 ## Human-Only Docs Rule
 
-If `docs/human/` exists, AI assistants must not read, edit, summarize, move, delete, or rely on anything inside it unless the user explicitly asks for that directory or a specific file.
+AI assistants must not read, edit, summarize, move, delete, or rely on anything inside `docs/human/`.
 
 The human-only rule belongs in `AGENTS.md` and this file, not inside `docs/human/`.
 
