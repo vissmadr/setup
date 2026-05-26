@@ -107,13 +107,4 @@ rules = [
     # documents
     { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#6a9589" },
 
-    # broken links
-    { name = "*", is = "orphan", fg = "#c34043" },
-
-    # executables
-    { name = "*", is = "exec", fg = "#76946a" },
-
-    # fallback
-    { name = "*", fg = "#c8c093" },
-    { name = "*/", fg = "#7e9cd8" },
 ]
