@@ -12,6 +12,8 @@
 PS1='[\W]\$ '
 
 set -o vi
+bind -m vi-insert '"\C-e": vi-edit-and-execute-command'
+bind -m vi-command '"\C-e": vi-edit-and-execute-command'
 
 ###########
 # Aliases #
