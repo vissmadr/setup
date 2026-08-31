@@ -38,3 +38,14 @@ blue    = "0x7fb4ca"
 magenta = "0x938aa9"
 cyan    = "0x7aa89f"
 white   = "0xd7d3b5"
+
+# Terminal workflow: Ctrl+1 scrollback/vi mode, Ctrl+2 shell edit in nvim, Ctrl+3 nvim terminal escape.
+[[keyboard.bindings]]
+key = "Key1"
+mods = "Control"
+action = "ToggleViMode"
+
+[[keyboard.bindings]]
+key = "Key2"
+mods = "Control"
+chars = "\u0005"

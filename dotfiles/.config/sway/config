@@ -16,8 +16,8 @@ set $menu wmenu-run
 # Output #
 ##########
 
-# output * bg #363636 solid_color
-output * bg ~/Pictures/backgrounds/background.png fill
+output * bg #363636 solid_color
+# output * bg ~/Pictures/backgrounds/background.png fill
 
 # # External monitor as main
 # output HDMI-A-1 {
@@ -35,6 +35,7 @@ output * bg ~/Pictures/backgrounds/background.png fill
 
 bindsym $mod+Return exec $term
 bindsym $mod+w exec $term
+bindsym $mod+e exec $term nvim -c terminal -c startinsert
 
 bindsym $mod+Shift+q kill
 
@@ -169,7 +170,7 @@ exec waybar
 # Night Light #
 ###############
 
-exec gammastep -O 5000
+exec gammastep -O 5250
 
 #########
 # Input #

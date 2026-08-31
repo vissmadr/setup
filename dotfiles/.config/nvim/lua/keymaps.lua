@@ -13,7 +13,7 @@ map("n", "<C-i>", "<C-o>", { noremap = true, silent = true })
 
 -- Terminal --
 map({ "n", "v" }, "<leader>v", "<cmd>terminal<CR>", { desc = "Terminal" })
-map("t", "<C-a>", "<C-\\><C-n>", { desc = "Terminal Unselect" })
+map("t", "<C-3>", "<C-\\><C-n>", { desc = "Terminal Escape" })
 
 -- Splits --
 map({ "n", "v" }, "<C-A-h>", "<C-w><", { desc = "Decrease Width" })

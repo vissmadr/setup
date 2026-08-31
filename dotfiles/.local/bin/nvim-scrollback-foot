@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+tmp="$(mktemp --suffix=.terminal-scrollback)"
+cleanup() {
+  rm -f "$tmp"
+}
+trap cleanup EXIT
+
+cat > "$tmp"
+
+if command -v foot >/dev/null 2>&1; then
+  foot nvim -R +'normal! G$' "$tmp"
+else
+  nvim -R +'normal! G$' "$tmp"
+fi
