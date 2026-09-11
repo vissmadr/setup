@@ -12,8 +12,10 @@
 PS1='[\W]\$ '
 
 set -o vi
-bind -m vi-insert '"\C-e": vi-edit-and-execute-command'
-bind -m vi-command '"\C-e": vi-edit-and-execute-command'
+
+# foot maps Ctrl+1 to this private sequence.
+bind -m vi-insert '"\e[9001~": vi-edit-and-execute-command'
+bind -m vi-command '"\e[9001~": vi-edit-and-execute-command'
 
 ###########
 # Aliases #
@@ -23,7 +25,9 @@ bind -m vi-command '"\C-e": vi-edit-and-execute-command'
 alias ..='cd ..'
 alias grep='grep --color=auto'
 alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first --icons --git'
+alias ll='eza -l -a --time-style=long-iso --sort=name --group-directories-first --icons --git'
 alias v='nvim'
+alias a='codex'
 alias f='yazi'
 alias x='clear'
 
@@ -75,7 +79,15 @@ source /usr/share/fzf/completion.bash
 
 # nvim
 export EDITOR=nvim
+export VISUAL=nvim
+
+# opencode
+export PATH=/home/doni/.opencode/bin:$PATH
 
 #########
 # Other #
 #########
+
+# >>> Codex installer >>>
+export PATH="/home/doni/.local/bin:$PATH"
+# <<< Codex installer <<<
