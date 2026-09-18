@@ -1,0 +1,44 @@
+[
+  {
+    "tool": "nvim",
+    "version": "v0.12.5",
+    "filename": "nvim-linux-arm64.tar.gz",
+    "url": "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-arm64.tar.gz",
+    "sha256": "1aa5ca085249580ae0f91eb14f27ec0919773ff2d99a163d03f3d6c21ac29725"
+  },
+  {
+    "tool": "yazi",
+    "version": "v26.9.1",
+    "filename": "yazi-aarch64-unknown-linux-gnu.zip",
+    "url": "https://github.com/sxyazi/yazi/releases/download/v26.9.1/yazi-aarch64-unknown-linux-gnu.zip",
+    "sha256": "02807f08d6b589b65b7516a4e259d83f5995d7a23bb12b3a155141385b370b3a"
+  },
+  {
+    "tool": "tree-sitter",
+    "version": "v0.27.0",
+    "filename": "tree-sitter-linux-arm64.gz",
+    "url": "https://github.com/tree-sitter/tree-sitter/releases/download/v0.27.0/tree-sitter-linux-arm64.gz",
+    "sha256": "3a35a2dd961ad842384e982c75daf792c01d1a67e442fc3914d4de37bd8a59cb"
+  },
+  {
+    "tool": "stylua",
+    "version": "v2.5.2",
+    "filename": "stylua-linux-aarch64.zip",
+    "url": "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-aarch64.zip",
+    "sha256": "0ef2ebf0b7e5a652b65c4cb96c6d9ffb3981a98547de3c764465bbf54a8d761a"
+  },
+  {
+    "tool": "fonts",
+    "version": "v3.5.1",
+    "filename": "JetBrainsMono.tar.xz",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/JetBrainsMono.tar.xz",
+    "sha256": "04d5e8f903693f9dd13e16f867e994834e681eb3c72c0d337a770dcda09010cf"
+  },
+  {
+    "tool": "node",
+    "version": "v24.21.0",
+    "filename": "node-v24.21.0-linux-arm64.tar.xz",
+    "url": "https://nodejs.org/dist/v24.21.0/node-v24.21.0-linux-arm64.tar.xz",
+    "sha256": "6ad1325edbdb5649c379b75a237147a666c95d4f9ae8d340fef2d1575d289ad2"
+  }
+]
