@@ -1,5 +1,0 @@
-# LightDM uses /etc/X11/Xsession for Wayland sessions too.
-# Make user-installed ARM64 tools available to launcher and terminal processes.
-export PATH="$HOME/.local/bin:$PATH"
-export EDITOR=nvim
-export VISUAL=nvim

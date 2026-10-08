@@ -30,6 +30,7 @@ alias v='nvim'
 alias a='codex'
 alias f='yazi'
 alias x='clear'
+alias b='btop'
 
 # git
 g() {
