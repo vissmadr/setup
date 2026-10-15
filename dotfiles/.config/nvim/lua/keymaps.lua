@@ -97,7 +97,7 @@ function M.completion(cmp, snippets)
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept only an explicitly selected item.
+    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept the selected item, or the first suggestion.
     -- Keep snippet jumps inside the active snippet; otherwise retain the normal key.
     ["<C-l>"] = cmp.mapping(function(fallback)
       if snippets.expand_or_locally_jumpable() then

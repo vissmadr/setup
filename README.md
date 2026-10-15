@@ -53,7 +53,7 @@ Markdown uses soft wrapping, display-line `j`/`k` (counts such as `5j` still mov
 | `Space ff` / `Space fd` / `Space fq` | Diff / file history / close diff |
 | `Space oo` / `Space on` / `Space oe` / `Space ow` | Open in Obsidian / new note / find notes / search notes |
 | `Space ol` / `Space ob` / `Space ot` | Note links / backlinks / template |
-| `Ctrl+n` / `Ctrl+p` / `Enter` | Select completion; Enter accepts an explicitly selected item |
+| `Ctrl+n` / `Ctrl+p` / `Enter` | Navigate completion; Enter accepts the selected or first suggestion, otherwise inserts a newline |
 | `Ctrl+l` / `Ctrl+h` in insert/snippet mode | Next/previous snippet field |
 | `Space x` / `Space z` / `Space v` | Toggle wrapping / numbers / spelling |
 | `Space c` | Toggle color previews |
