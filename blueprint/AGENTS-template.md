@@ -54,7 +54,7 @@ src/                                   -- main source code
 
 Write this structure like the real filesystem.
 If source files are nested, show the same nesting here instead of flattening paths into one list.
-Add every important source file and directory with a short sentence describing what it owns.
+List important entry points, directories, and ownership boundaries with short descriptions.
 Update this inventory when files are added, removed, renamed, or responsibilities change.
 
 ## Commands
@@ -66,7 +66,7 @@ Update this inventory when files are added, removed, renamed, or responsibilitie
 - `AGENTS.md` is the first file AI assistants should read.
 - Keep `AGENTS.md` updated whenever files are added, removed, renamed, or responsibilities change.
 - Keep the tech stack section current, including important language, runtime, framework, tool, and resource/config versions.
-- Keep the project structure inventory current. It should list all source files with short descriptions of what they do, following the real directory nesting.
+- Keep the project structure map current. Cover important entry points and ownership boundaries without duplicating a complete filesystem inventory.
 - `docs/ai/` contains AI-maintained current-truth documentation.
 - `docs/plans/` contains active plans and handoffs, not canonical implemented behavior.
 - `docs/superpowers/` contains Superpowers-generated specs and plans.

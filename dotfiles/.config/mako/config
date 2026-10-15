@@ -1,0 +1,13 @@
+# Brief popups, including applications that request an infinite timeout.
+default-timeout=2400
+ignore-timeout=1
+
+# Match the desktop palette.
+background-color=#202020
+text-color=#dcd7ba
+border-color=#7e9cd8
+border-size=2
+
+# Keep genuinely critical alerts until explicitly dismissed.
+[urgency=critical]
+default-timeout=0

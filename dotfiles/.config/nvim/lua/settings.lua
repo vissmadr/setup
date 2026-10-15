@@ -1,68 +1,63 @@
-local o = vim.o
-local g = vim.g
+local options = vim.opt
 
-o.clipboard = "unnamedplus"   -- Use system clipboard as default register.
+options.spell = true     -- Check spelling by default; Space v toggles it per window.
+options.spelllang = "en" -- Use the English dictionary.
 
-o.swapfile = false            -- Disable swap file creation.
-o.undofile = true             -- Enable persistent undo.
+-- Keep the inline explanations aligned when formatting this file.
+-- stylua: ignore start
 
-o.ignorecase = true           -- Ignore case when searching.
-o.smartcase = true            -- Use case-sensitive search if any uppercase characters are used.
+-- Files and search.
+options.clipboard = "unnamedplus"  -- Use the system clipboard for yanks and pastes.
+options.swapfile = false           -- Avoid swap files alongside project files.
+options.undofile = true            -- Keep undo history between sessions.
+options.ignorecase = true          -- Search without case sensitivity by default.
+options.smartcase = true           -- Uppercase in a search makes it case-sensitive.
 
-o.laststatus = 3              -- Global statusline
+-- Indentation (filetype settings can override these).
+options.smartindent = true     -- Indent new lines using surrounding code.
+options.expandtab = true       -- Insert spaces instead of tabs.
+options.shiftwidth = 2         -- Indent width; Zig overrides this to four.
+options.tabstop = 2            -- Display width of a literal tab.
+options.softtabstop = 2        -- Spaces inserted/removed by Tab and Backspace.
+options.iskeyword:remove("_")  -- Treat snake_case parts as separate words.
 
-o.smartindent = true          -- Automatically adjust indentation based on syntax.
-o.expandtab = true            -- Use spaces instead of tabs for indentation.
-o.shiftwidth = 2              -- Number of spaces for each indentation level.
-o.tabstop = 2                 -- Number of spaces a tab character represents.
-o.softtabstop = 2             -- Number of spaces inserted for <Tab> in insert mode.
+-- Windows and folds.
+options.equalalways = false    -- Keep existing split sizes when opening/closing windows.
+options.splitright = true      -- Open vertical splits on the right.
+options.splitbelow = true      -- Open horizontal splits below.
+options.wrap = false           -- Keep code unwrapped; Markdown enables soft wrapping.
+options.foldmethod = "indent"  -- Fallback folding when no parser is active.
+options.foldlevel = 99         -- Start with folds open.
+options.winborder = "rounded"  -- Default border for floating windows.
 
-o.winborder = "rounded"       -- Sets the border of floating windows.
+-- Interface.
+options.laststatus = 3          -- One statusline shared by all windows.
+options.number = false          -- Hide line numbers until toggled with Space z.
+options.relativenumber = false  -- Use absolute numbers when enabled.
+options.signcolumn = "yes"      -- Reserve space for diagnostics and Git signs.
+options.cursorline = false      -- Keep the current line background unobtrusive.
+options.termguicolors = true    -- Use the full theme palette.
+options.showtabline = 0         -- Hide the tab bar.
+options.showmode = false        -- The statusline already shows the mode.
+options.shortmess:append("I")   -- Skip the startup intro.
 
-o.number = false              -- Show absolute line numbers.
-o.relativenumber = false      -- Show relative line numbers.
-o.signcolumn = "yes"          -- Show sign column.
-o.cursorline = false          -- Show horizontal cursor line.
-o.cursorcolumn = false        -- Show vertical cursor column.
-o.wrap = false                -- Word wrap.
+-- Whitespace.
+options.list = true                                          -- Show otherwise invisible whitespace.
+options.listchars = { tab = "→ ", trail = "·", nbsp = "␣" }  -- Tabs, trailing spaces, nonbreaking spaces.
+options.fillchars = { eob = " ", fold = " " }                -- Hide end-of-buffer tildes and fold filler.
 
--- o.timeoutlen = 0;             -- Wait delay for key combinations.
-
--- o.mouse = "a"                 -- Enable mouse support in all modes.
-
-o.equalalways = false         -- Don't resize splits automatically.
-o.splitright = true           -- Split vertical window to the right.
-o.splitbelow = true           -- Split horizontal window to the bottom.
-
-o.foldmethod = "indent";      -- Stuff that enables folding.
-o.foldlevel = 999;            -- Stuff that enables folding.
-
-o.list = true                 -- Show hidden characters.
-o.fillchars = "eob: "         -- End of buffer (default ~) characters.
-
-o.termguicolors = true        -- Enable 24-bit RGB colors.
-
-o.showtabline = 0             -- Show tabs level.
-
-vim.opt.shortmess:append("I") -- Disable welcome message.
-
-vim.opt.iskeyword:remove("_") -- Treat "_" as a symbol.
-
-vim.opt.fillchars:append({    -- Remove fold fillchars
-  fold = " "
-})
-
-vim.opt.showmode = false      -- Display -- MODE -- message
-
+-- Keep diagnostics visible without inserting text into the document.
 vim.diagnostic.config({
-  virtual_text = false,       -- Inline text
-  signs = true,               -- Sign column
-  underline = true,           -- Underlines
-  update_in_insert = false,   -- Updates in insert mode
-  severity_sort = true,       -- Sort by severity
+  virtual_text = false,     -- Read messages in the diagnostic float (Space dd).
+  signs = true,             -- Mark affected lines in the sign column.
+  underline = true,         -- Highlight the affected range.
+  update_in_insert = false, -- Wait until leaving insert mode to refresh.
+  severity_sort = true,     -- Show errors before warnings and hints.
 })
 
-g.loaded_node_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_python3_provider = 0
-g.loaded_ruby_provider = 0
+-- stylua: ignore end
+
+-- These configs use Lua plugins; external language providers are unnecessary.
+for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
+  vim.g["loaded_" .. provider .. "_provider"] = 0
+end

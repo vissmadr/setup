@@ -1,6 +1,6 @@
 -- Color scheme entry point.
 -- Loads palette + theme, then applies all highlight groups.
--- Usage: require("colors") in your init.lua
+-- Loaded through :colorscheme setup.
 
 local M = {}
 
@@ -17,13 +17,10 @@ end
 -- 1. Treesitter first (primary syntax engine)
 -- 2. LSP (augments treesitter)
 -- 3. legacy syntax (fallback), editor UI, diagnostics, diff, plugins.
-apply(require("colors.highlights.treesitter"))
-apply(require("colors.highlights.markdown"))
-apply(require("colors.highlights.lsp"))
-apply(require("colors.highlights.syntax"))
-apply(require("colors.highlights.editor"))
-apply(require("colors.highlights.diagnostics"))
-apply(require("colors.highlights.diff"))
-apply(require("colors.highlights.plugins"))
+function M.apply()
+  for _, name in ipairs({ "treesitter", "markdown", "lsp", "syntax", "editor", "diagnostics", "diff", "plugins" }) do
+    apply(require("colors.highlights." .. name))
+  end
+end
 
 return M

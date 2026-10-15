@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-tmp="$(mktemp --suffix=.terminal-scrollback)"
-cleanup() {
-  rm -f "$tmp"
-}
-trap cleanup EXIT
+scrollback="$(mktemp --suffix=.terminal-scrollback)"
+trap 'rm -f -- "$scrollback"' EXIT
+cat > "$scrollback"
 
-cat > "$tmp"
-
+# Use normal Neovim behavior; only persistent history for this temporary file is disabled.
+arguments=(-n -i NONE '+setlocal noundofile' '+normal! G0' "$scrollback")
 if command -v foot >/dev/null 2>&1; then
-  foot nvim -R +'normal! G$' "$tmp"
+  foot --app-id=terminal-scrollback nvim "${arguments[@]}"
 else
-  nvim -R +'normal! G$' "$tmp"
+  nvim "${arguments[@]}"
 fi

@@ -1,15 +1,26 @@
 return {
-  'nvim-telescope/telescope.nvim',
-
-  branch = 'master',
-
-  dependencies = { 'nvim-lua/plenary.nvim' },
-
-  config = function()
-    require("telescope").setup({
-      defaults = {
-        layout_strategy = "vertical",
+  "nvim-telescope/telescope.nvim",
+  cmd = "Telescope",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  keys = require("keymaps").telescope,
+  opts = {
+    defaults = {
+      layout_strategy = "vertical",
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--hidden",
+        "--glob",
+        "!.git",
       },
-    })
-  end,
+    },
+    pickers = {
+      find_files = { find_command = { "rg", "--files", "--hidden", "--glob", "!.git" } },
+    },
+  },
 }

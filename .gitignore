@@ -1,0 +1,5 @@
+dotfiles/.config/sway/local.conf
+dotfiles/.config/nvim/lazy-lock.json
+__pycache__/
+*.pyc
+nvim.log

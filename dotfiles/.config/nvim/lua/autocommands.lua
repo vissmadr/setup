@@ -1,32 +1,33 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
+local group = vim.api.nvim_create_augroup("SetupGeneral", { clear = true })
 
-local general = augroup("General", { clear = true })
-
-autocmd("TextYankPost", {
-  callback = function()
-    vim.hl.on_yank({
-      timeout = 200,
-    })
+vim.api.nvim_create_autocmd({ "TermOpen", "BufWinEnter" }, {
+  group = group,
+  callback = function(args)
+    if vim.bo[args.buf].buftype == "terminal" then
+      -- Spell is window-local; also disable it when reopening a terminal buffer.
+      vim.opt_local.spell = false
+    end
   end,
-  group = general,
-  desc = "Highlight when yanking text",
+  desc = "Disable spelling in terminal buffers",
 })
 
-autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = group,
   callback = function()
-    vim.opt.formatoptions:remove({ "c", "r", "o" })
+    vim.hl.on_yank({ timeout = 200 })
   end,
-  group = general,
-  desc = "Disable New Line Comment",
+  desc = "Highlight yanked text",
 })
 
--- autocmd("BufEnter", {
---   pattern = "*.{png,jpg,jpeg,webp,gif}",
---   callback = function(args)
---     local file_path = vim.fn.fnamemodify(args.file, ":p")
---     vim.fn.jobstart({ "imv", file_path }, { detach = true })
---   end,
---   group = general,
---   desc = "Open image files with imv",
--- })
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
+  callback = function(args)
+    -- Filetype plugins may run after this callback; apply our preference last.
+    vim.schedule(function()
+      if vim.api.nvim_buf_is_valid(args.buf) then
+        vim.bo[args.buf].formatoptions = vim.bo[args.buf].formatoptions:gsub("[cro]", "")
+      end
+    end)
+  end,
+  desc = "Keep comment continuation manual",
+})

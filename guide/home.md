@@ -1,14 +1,10 @@
-```bash
-cd ~
+# Home directories
 
-mkdir core
-mkdir work
+Create the optional personal directories you use:
 
-mkdir Apps
-mkdir Assets
-mkdir Pictures
-mkdir Pictures/backgrounds
-mkdir Pictures/screenshots
-mkdir Videos
-mkdir Videos/screencasts
+```sh
+mkdir -p ~/core ~/work ~/Apps ~/Assets \
+  ~/Pictures/backgrounds ~/Pictures/screenshots ~/Videos/screencasts
 ```
+
+Screenshots and recordings also create their destination directories when needed. See the root [README](../README.md) for installation, backups, and local overrides.

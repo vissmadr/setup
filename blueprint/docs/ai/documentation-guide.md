@@ -38,19 +38,17 @@ It should include:
 - optional validation, config, and resources notes when they matter
 - current architecture facts
 - a project structure map that mirrors the real filesystem nesting
-- all source files with short descriptions of what they do
+- important entry points, directories, and ownership boundaries with short descriptions
 - common commands
 - documentation rules
 - hard constraints and generated paths to ignore
 
 Update `AGENTS.md` in the same task when:
 
-- files or directories are added
-- files or directories are removed
-- files or directories are renamed
+- important entry points or directories are added, removed, or renamed
 - file responsibilities change
 - tech stack versions change
-- source files need new or corrected descriptions
+- documented entry points or ownership boundaries need new or corrected descriptions
 - commands change
 - validation, config, or resource workflows change
 - architecture or dependency boundaries change

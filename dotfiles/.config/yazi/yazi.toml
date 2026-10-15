@@ -1,6 +1,6 @@
 [opener]
 edit = [
-  { run = "nvim \"$1\"", desc = "Edit any file", block = true }
+  { run = "nvim -- \"$@\"", desc = "Edit any file", block = true }
 ]
 
 [mgr]

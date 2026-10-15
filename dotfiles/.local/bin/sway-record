@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+runtime="${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR must be set by the session}"
+pidfile="$runtime/setup-recorder.pid"
+
+case "${1:-region}" in
+  stop)
+    if [[ -s "$pidfile" ]]; then
+      pkill -INT -L -F "$pidfile" -x wf-recorder 2>/dev/null || true
+    fi
+    exit 0
+    ;;
+  region|full) mode="${1:-region}" ;;
+  *) echo 'Usage: sway-record [region|full|stop]' >&2; exit 2 ;;
+esac
+
+# Keep one inode for both ownership and the PID; never unlink a flock file.
+exec 9<>"$pidfile"
+if ! flock -n 9; then
+  echo 'A recording is already running.' >&2
+  exit 1
+fi
+: > "$pidfile"
+
+arguments=()
+if [[ "$mode" == region ]]; then
+  geometry="$(slurp)" || exit 0
+  [[ -n "$geometry" ]] || exit 0
+  arguments=(-g "$geometry")
+fi
+
+directory="$HOME/Videos/screencasts"
+mkdir -p "$directory"
+recording="$(mktemp "$directory/$(date +%Y%m%d-%H%M%S)-XXXXXX.mp4")"
+recorder_pid=''
+# shellcheck disable=SC2329 # Invoked by the EXIT trap, including explicit exit below.
+cleanup() {
+  if [[ -n "$recorder_pid" ]]; then
+    kill -INT "$recorder_pid" 2>/dev/null || true
+    wait "$recorder_pid" 2>/dev/null || true
+  fi
+  : > "$pidfile"
+  if [[ ! -s "$recording" ]]; then
+    rm -f -- "$recording"
+  fi
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+wf-recorder "${arguments[@]}" -f "$recording" &
+recorder_pid=$!
+printf '%s\n' "$recorder_pid" > "$pidfile"
+status=0
+wait "$recorder_pid" || status=$?
+recorder_pid=''
+exit "$status"

@@ -1,94 +1,86 @@
-#
-# ~/.bashrc
-#
-
-########
-# Bash #
-########
-
-# If not running interactively, don't do anything
+# shellcheck shell=bash
 [[ $- != *i* ]] && return
 
-PS1='[\W]\$ '
+export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
+export EDITOR=nvim
+export VISUAL=nvim
+export EZA_COLORS="da=2:uu=2:"
 
+PS1='[\W]\$ '
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=10000
+HISTFILESIZE=20000
+shopt -s histappend checkwinsize
 set -o vi
 
-# foot maps Ctrl+1 to this private sequence.
-bind -m vi-insert '"\e[9001~": vi-edit-and-execute-command'
-bind -m vi-command '"\e[9001~": vi-edit-and-execute-command'
+# Edit Readline's buffer without Bash's edit-and-execute behavior.
+_setup_edit_command() {
+  local edit_directory
+  edit_directory="$(mktemp -d -t setup-command-XXXXXXXX)" || return
+  printf '%s\n' "$READLINE_LINE" > "$edit_directory/command.sh"
+  if nvim -n -i NONE "$edit_directory/command.sh" \
+    -c 'lua require("keymaps").command_editor()' < /dev/tty > /dev/tty; then
+    READLINE_LINE="$(< "$edit_directory/command.sh")"
+    READLINE_POINT=${#READLINE_LINE}
+  fi
+  rm -rf -- "$edit_directory"
+}
 
-###########
-# Aliases #
-###########
+# Both terminals send this private sequence for Ctrl+1.
+bind -m vi-insert -x '"\e[9001~": _setup_edit_command'
+bind -m vi-command -x '"\e[9001~": _setup_edit_command'
 
-# general
 alias ..='cd ..'
 alias grep='grep --color=auto'
-alias l='eza -l -a --time-style=long-iso --sort=name --group-directories-first --icons --git'
-alias ll='eza -l -a --time-style=long-iso --sort=name --group-directories-first --icons --git'
-alias v='nvim'
-alias a='codex'
-alias f='yazi'
-alias x='clear'
-alias b='btop'
+alias l='eza -la --time-style=long-iso --sort=name --group-directories-first --icons --git'
+alias ll=l
+alias v=nvim
+alias a=codex
+alias f=yazi
+alias x=clear
+alias b=btop
 
-# git
 g() {
   if [[ $# -eq 0 ]]; then
     git
     return
   fi
-
-  local cmd="$1"
+  local command="$1"
   shift
-
-  case "$cmd" in
-    s)  git status ;;
-    b)  git branch -a ;;
-    l)  git log --oneline ;;
-    L)  git log ;;
-    d)  git diff ;;
-    D)  git diff --staged ;;
-    p)  git pull ;;
-    a)  git add . ;;
-    u)  git commit -m "update" ;;
-    c)
-      if [[ $# -ne 1 ]]; then
-        echo 'Usage: g c "commit message"' >&2
-        return 1
-      fi
-      git commit -m "$1"
+  case "$command" in
+    s) git status "$@" ;;
+    b) git branch -a "$@" ;;
+    l) git log --oneline "$@" ;;
+    L) git log "$@" ;;
+    d) git diff "$@" ;;
+    D) git diff --staged "$@" ;;
+    p) git pull "$@" ;;
+    P) git push "$@" ;;
+    a)
+      if [[ $# -gt 0 ]]; then git add "$@"; else git add .; fi
       ;;
-    P)  git push ;;
-    *)  git "$cmd" "$@" ;;
+    u) git commit -m update "$@" ;;
+    c)
+      if [[ $# -eq 0 ]]; then
+        echo 'Usage: g c "commit message" [git commit options]' >&2
+        return 2
+      fi
+      local message="$1"
+      shift
+      git commit -m "$message" "$@"
+      ;;
+    *) git "$command" "$@" ;;
   esac
 }
 
-############
-# Programs #
-############
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init --cmd c bash)"
+fi
+for integration in /usr/share/fzf/key-bindings.bash /usr/share/fzf/completion.bash; do
+  # shellcheck source=/dev/null
+  [[ ! -r "$integration" ]] || source "$integration"
+done
+unset integration
 
-# zoxide
-eval "$(zoxide init --cmd c bash)"
-
-# eza
-export EXA_COLORS="da=2:uu=2:"
-
-# fzf: In case Ctrl-R doesn't work well
-source /usr/share/fzf/key-bindings.bash
-source /usr/share/fzf/completion.bash
-
-# nvim
-export EDITOR=nvim
-export VISUAL=nvim
-
-# opencode
-export PATH=/home/doni/.opencode/bin:$PATH
-
-#########
-# Other #
-#########
-
-# >>> Codex installer >>>
-export PATH="/home/doni/.local/bin:$PATH"
-# <<< Codex installer <<<
+# shellcheck source=/dev/null
+[[ ! -r "$HOME/.bashrc.local" ]] || source "$HOME/.bashrc.local"

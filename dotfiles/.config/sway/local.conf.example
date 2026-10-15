@@ -1,0 +1,4 @@
+# Copy to local.conf for machine-specific settings (ignored by Git).
+# Find output identifiers and modes with: swaymsg -t get_outputs
+# output HDMI-A-1 mode 2560x1440@144Hz position 0 0 scale 1
+# input type:touchpad tap enabled

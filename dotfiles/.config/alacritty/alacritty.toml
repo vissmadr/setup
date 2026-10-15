@@ -1,8 +1,5 @@
 # ~/.config/alacritty/alacritty.toml
 
-[env]
-TERM = "xterm-256color"
-
 [font]
 normal.family = "JetBrainsMono Nerd Font Mono"
 bold.family   = "JetBrainsMono Nerd Font Mono"
@@ -39,13 +36,13 @@ magenta = "0x938aa9"
 cyan    = "0x7aa89f"
 white   = "0xd7d3b5"
 
-# Terminal workflow: Ctrl+1 scrollback/vi mode, Ctrl+2 shell edit in nvim, Ctrl+3 nvim terminal escape.
+# Ctrl+1 edits the shell command; Ctrl+2 opens terminal scrollback/vi mode.
 [[keyboard.bindings]]
 key = "Key1"
 mods = "Control"
-action = "ToggleViMode"
+chars = "\u001b[9001~"
 
 [[keyboard.bindings]]
 key = "Key2"
 mods = "Control"
-chars = "\u0005"
+action = "ToggleViMode"
