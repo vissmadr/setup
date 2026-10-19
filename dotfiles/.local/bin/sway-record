@@ -32,7 +32,18 @@ fi
 
 directory="$HOME/Videos/screencasts"
 mkdir -p "$directory"
-recording="$(mktemp "$directory/$(date +%Y%m%d-%H%M%S)-XXXXXX.mp4")"
+timestamp="$(date +%Y%m%d-%H%M%S)"
+recording="$directory/$timestamp.mp4"
+suffix=0
+# Reserve atomically so simultaneous captures cannot overwrite each other.
+while ! (umask 077; set -o noclobber; : > "$recording") 2>/dev/null; do
+  if [[ ! -e "$recording" && ! -L "$recording" ]]; then
+    echo "Cannot create recording: $recording" >&2
+    exit 1
+  fi
+  suffix=$((suffix + 1))
+  recording="$directory/$timestamp-$suffix.mp4"
+done
 recorder_pid=''
 # shellcheck disable=SC2329 # Invoked by the EXIT trap, including explicit exit below.
 cleanup() {

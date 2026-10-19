@@ -2,6 +2,8 @@
 
 Personal Linux dotfiles for Bash, Neovim, Sway, Waybar, Foot, Alacritty, Yazi, and btop. The editor focuses on Markdown, Zig, and HTML/CSS/JavaScript/TypeScript without React.
 
+btop refreshes every 100 ms.
+
 ## Install
 
 Install the dependencies in [guide/packages.md](guide/packages.md), then preview the symlinks:
@@ -23,6 +25,8 @@ Before installing, preserve your Git identity and any machine-specific Git setti
 For an isolated installation, use `--target /tmp/setup-home --apply`. The default invocation only prints a plan.
 
 Start a new shell after installation. Start a new Sway session to apply startup services; `Mod+Shift+z` reloads bindings/settings but does not restart session services. During an existing session, restart Waybar manually to load its changed config.
+
+After jumping to a project with `c g` or `c v`, run `a` to open Neovim with Codex running in its terminal, ready for typing. `A` runs Codex directly, and `v` opens Neovim normally. In the Neovim terminal, `Ctrl+3` returns to normal mode; `i` resumes terminal input.
 
 ## Neovim
 
@@ -57,7 +61,7 @@ Markdown uses soft wrapping, display-line `j`/`k` (counts such as `5j` still mov
 | `Ctrl+l` / `Ctrl+h` in insert/snippet mode | Next/previous snippet field |
 | `Space x` / `Space z` / `Space v` | Toggle wrapping / numbers / spelling |
 | `Space c` | Toggle color previews |
-| `Space 1` | Open a terminal |
+| `Space 1` / `Space 2` / `Space 3` | Open a terminal ready for typing |
 | `Ctrl+3` in a Neovim terminal | Leave terminal mode |
 
 Completion/snippets load when needed; Telescope, Aerial, Diffview, formatting, and color previews load on their commands or keys. Use `:Lazy profile`, `:checkhealth`, and `:ConformInfo` to inspect behavior.
@@ -80,7 +84,7 @@ Foot’s Ctrl+2 opens regular Neovim in a normal tiled window, with the scrollba
 
 Ctrl+1 never executes the edited command automatically: press Enter at the Bash prompt to run it. Cancelling restores the original command. This applies to the Ctrl+1 command editor; ordinary Neovim buffers keep their normal quit behavior.
 
-Captures create `~/Pictures/screenshots` and `~/Videos/screencasts` as needed. Cancelled selections leave the clipboard unchanged. Recording allows one managed recorder per session runtime directory; stopping it requires a locked PID file, so stale PID files do not target unrelated recordings.
+Captures create `~/Pictures/screenshots` and `~/Videos/screencasts` as needed, using timestamp names such as `20261016-130258.png` or `20261016-130258.mp4`. If that filename already exists, captures append `-1`, `-2`, and so on without overwriting existing files. Cancelled selections leave the clipboard unchanged. Recording allows one managed recorder per session runtime directory; stopping it requires a locked PID file, so stale PID files do not target unrelated recordings.
 
 Locking is manual with `Mod+Escape`; this setup does not configure automatic locking or idle screen-off timers.
 

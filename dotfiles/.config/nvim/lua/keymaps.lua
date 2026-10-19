@@ -11,7 +11,9 @@ map("n", "<C-o>", "<C-i>", { desc = "Jump forward" })
 map("n", "<C-i>", "<C-o>", { desc = "Jump back" })
 
 -- Terminal and window sizing.
-map("n", "<leader>1", "<cmd>terminal<CR>", { desc = "Terminal" })
+map("n", "<leader>1", "<cmd>terminal<CR><cmd>startinsert<CR>", { desc = "Terminal" })
+map("n", "<leader>2", "<cmd>terminal<CR><cmd>startinsert<CR>", { desc = "Terminal" })
+map("n", "<leader>3", "<cmd>terminal<CR><cmd>startinsert<CR>", { desc = "Terminal" })
 map("t", "<C-3>", "<C-\\><C-n>", { desc = "Leave terminal mode" })
 map("n", "<C-A-h>", "<C-w><", { desc = "Decrease width" })
 map("n", "<C-A-j>", "<C-w>-", { desc = "Decrease height" })

@@ -35,7 +35,8 @@ alias grep='grep --color=auto'
 alias l='eza -la --time-style=long-iso --sort=name --group-directories-first --icons --git'
 alias ll=l
 alias v=nvim
-alias a=codex
+alias a='nvim -c "terminal codex" -c startinsert'
+alias A=codex
 alias f=yazi
 alias x=clear
 alias b=btop

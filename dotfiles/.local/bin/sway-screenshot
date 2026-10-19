@@ -14,7 +14,18 @@ esac
 
 directory="$HOME/Pictures/screenshots"
 mkdir -p "$directory"
-image="$(mktemp "$directory/$(date +%Y%m%d-%H%M%S)-XXXXXX.png")"
+timestamp="$(date +%Y%m%d-%H%M%S)"
+image="$directory/$timestamp.png"
+suffix=0
+# Reserve atomically so simultaneous captures cannot overwrite each other.
+while ! (umask 077; set -o noclobber; : > "$image") 2>/dev/null; do
+  if [[ ! -e "$image" && ! -L "$image" ]]; then
+    echo "Cannot create screenshot: $image" >&2
+    exit 1
+  fi
+  suffix=$((suffix + 1))
+  image="$directory/$timestamp-$suffix.png"
+done
 if ! grim "${arguments[@]}" "$image"; then
   rm -f -- "$image"
   exit 1
