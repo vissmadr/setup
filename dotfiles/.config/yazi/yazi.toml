@@ -2,6 +2,15 @@
 edit = [
   { run = "nvim -- \"$@\"", desc = "Edit any file", block = true }
 ]
+video = [
+  { run = "mpv -- %s", desc = "Play in mpv", orphan = true }
+]
+
+[open]
+prepend_rules = [
+  { url = "*.{mp4,webm}", use = "video" },
+  { mime = "video/*", use = "video" }
+]
 
 [mgr]
 show_hidden = true

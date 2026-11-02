@@ -2,8 +2,6 @@
 
 Personal Linux dotfiles for Bash, Neovim, Sway, Waybar, Foot, Alacritty, Yazi, and btop. The editor focuses on Markdown, Zig, and HTML/CSS/JavaScript/TypeScript without React.
 
-btop refreshes every 100 ms.
-
 ## Install
 
 Install the dependencies in [guide/packages.md](guide/packages.md), then preview the symlinks:
@@ -46,23 +44,23 @@ The existing `epwalsh/obsidian.nvim` plugin is retained. The `vault` and `grappl
 
 Markdown uses soft wrapping, display-line `j`/`k` (counts such as `5j` still move by file lines), visible link syntax, and English spell checking. Spelling starts on for regular files with muted curly underlines and is automatically disabled in terminal buffers; toggle it per window with `Space v`. Use `z=` for suggestions, `zg` to remember a valid word in your personal dictionary, and `]s`/`[s` to move between flagged words. Change `spelllang` locally for other languages. Zig uses four-space indentation. The `setup` colorscheme keeps the existing palette and can be restored with `:colorscheme setup`.
 
-| Keys | Action |
-| --- | --- |
-| `Space a` / `Space s` | Files / symbols and Markdown headings |
-| `Space q` / `Space w` | Find files / search text, including hidden files while respecting ignore files |
-| `Space e` / `Space r` | Diagnostics / recent files |
-| `Space dq` / `Space dw` | Definitions / references |
-| `Space de` / `Space dr` / `K` | Rename / code action / documentation |
-| `Space d=` | Format buffer or visual selection |
-| `Space ff` / `Space fd` / `Space fq` | Diff / file history / close diff |
-| `Space oo` / `Space on` / `Space oe` / `Space ow` | Open in Obsidian / new note / find notes / search notes |
-| `Space ol` / `Space ob` / `Space ot` | Note links / backlinks / template |
-| `Ctrl+n` / `Ctrl+p` / `Enter` | Navigate completion; Enter accepts the selected or first suggestion, otherwise inserts a newline |
-| `Ctrl+l` / `Ctrl+h` in insert/snippet mode | Next/previous snippet field |
-| `Space x` / `Space z` / `Space v` | Toggle wrapping / numbers / spelling |
-| `Space c` | Toggle color previews |
-| `Space 1` / `Space 2` / `Space 3` | Open a terminal ready for typing |
-| `Ctrl+3` in a Neovim terminal | Leave terminal mode |
+| Keys                                              | Action                                                                                           |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `Space a` / `Space s`                             | Files / symbols and Markdown headings                                                            |
+| `Space q` / `Space w`                             | Find files / search text, including hidden files while respecting ignore files                   |
+| `Space e` / `Space r`                             | Diagnostics / recent files                                                                       |
+| `Space dq` / `Space dw`                           | Definitions / references                                                                         |
+| `Space de` / `Space dr` / `K`                     | Rename / code action / documentation                                                             |
+| `Space d=`                                        | Format buffer or visual selection                                                                |
+| `Space ff` / `Space fd` / `Space fq`              | Diff / file history / close diff                                                                 |
+| `Space oo` / `Space on` / `Space oe` / `Space ow` | Open in Obsidian / new note / find notes / search notes                                          |
+| `Space ol` / `Space ob` / `Space ot`              | Note links / backlinks / template                                                                |
+| `Ctrl+n` / `Ctrl+p` / `Enter`                     | Navigate completion; Enter accepts the selected or first suggestion, otherwise inserts a newline |
+| `Ctrl+l` / `Ctrl+h` in insert/snippet mode        | Next/previous snippet field                                                                      |
+| `Space x` / `Space z` / `Space v`                 | Toggle wrapping / numbers / spelling                                                             |
+| `Space c`                                         | Toggle color previews                                                                            |
+| `Space 1` / `Space 2` / `Space 3`                 | Open a terminal ready for typing                                                                 |
+| `Ctrl+3` in a Neovim terminal                     | Leave terminal mode                                                                              |
 
 Completion/snippets load when needed; Telescope, Aerial, Diffview, formatting, and color previews load on their commands or keys. Use `:Lazy profile`, `:checkhealth`, and `:ConformInfo` to inspect behavior.
 
@@ -70,15 +68,15 @@ Completion/snippets load when needed; Telescope, Aerial, Diffview, formatting, a
 
 Sway keeps the existing workspace, focus, resize, and launch bindings. Its main config defines shared commands and appearance; `conf.d/` separates bindings, input, and session services. `Mod` is Super after the configured Alt/Super swap. The keyboard layouts are US and Bulgarian phonetic, switched with Alt+Space; Caps Lock acts as Ctrl.
 
-| Keys | Action |
-| --- | --- |
-| `Mod+m` / `Mod+Shift+m` | Region / full-screen screenshot, saved and copied as PNG |
-| `Mod+n` / `Mod+Shift+n` / `Mod+b` | Region / full-screen recording / stop this setup's recorder |
-| `Mod+Escape` | Lock screen |
-| `Mod+d` / `Mod+Shift+d` | Dismiss latest / all notifications |
-| `Mod+Shift+z` / `Mod+Shift+x` | Reload config / exit Sway |
-| `Ctrl+1` in Foot or Alacritty | Edit the shell command; `ZZ` returns it to the prompt, `ZQ` cancels |
-| `Ctrl+2` in Foot / Alacritty | Open scrollback in Neovim / terminal vi mode |
+| Keys                              | Action                                                              |
+| --------------------------------- | ------------------------------------------------------------------- |
+| `Mod+m` / `Mod+Shift+m`           | Region / full-screen screenshot, saved and copied as PNG            |
+| `Mod+n` / `Mod+Shift+n` / `Mod+b` | Region / full-screen recording / stop this setup's recorder         |
+| `Mod+Escape`                      | Lock screen                                                         |
+| `Mod+d` / `Mod+Shift+d`           | Dismiss latest / all notifications                                  |
+| `Mod+Shift+z` / `Mod+Shift+x`     | Reload config / exit Sway                                           |
+| `Ctrl+1` in Foot or Alacritty     | Edit the shell command; `ZZ` returns it to the prompt, `ZQ` cancels |
+| `Ctrl+2` in Foot / Alacritty      | Open scrollback in Neovim / terminal vi mode                        |
 
 Foot’s Ctrl+2 opens regular Neovim in a normal tiled window, with the scrollback in an editable temporary file. Search, edit, copy, and quit as usual; use `:w <path>` to keep a copy, since the temporary file is removed when Neovim closes. The exported scrollback is plain text, so original terminal-output colors are not retained.
 
