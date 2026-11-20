@@ -25,7 +25,7 @@ options.iskeyword:remove("_")  -- Treat snake_case parts as separate words.
 options.equalalways = false    -- Keep existing split sizes when opening/closing windows.
 options.splitright = true      -- Open vertical splits on the right.
 options.splitbelow = true      -- Open horizontal splits below.
-options.wrap = false           -- Keep code unwrapped; Markdown enables soft wrapping.
+options.wrap = false           -- Space x toggles wrapping per window.
 options.foldmethod = "indent"  -- Fallback folding when no parser is active.
 options.foldlevel = 99         -- Start with folds open.
 options.winborder = "rounded"  -- Default border for floating windows.

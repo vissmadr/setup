@@ -30,7 +30,7 @@ if [[ "$mode" == region ]]; then
   arguments=(-g "$geometry")
 fi
 
-directory="$HOME/Videos/screencasts"
+directory="$HOME/Captures/videos"
 mkdir -p "$directory"
 timestamp="$(date +%Y%m%d-%H%M%S)"
 recording="$directory/$timestamp.mp4"

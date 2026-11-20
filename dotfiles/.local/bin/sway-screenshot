@@ -12,7 +12,7 @@ case "${1:-region}" in
   *) echo 'Usage: sway-screenshot [region|full]' >&2; exit 2 ;;
 esac
 
-directory="$HOME/Pictures/screenshots"
+directory="$HOME/Captures/screenshots"
 mkdir -p "$directory"
 timestamp="$(date +%Y%m%d-%H%M%S)"
 image="$directory/$timestamp.png"

@@ -18,8 +18,7 @@ _setup_edit_command() {
   local edit_directory
   edit_directory="$(mktemp -d -t setup-command-XXXXXXXX)" || return
   printf '%s\n' "$READLINE_LINE" > "$edit_directory/command.sh"
-  if nvim -n -i NONE "$edit_directory/command.sh" \
-    -c 'lua require("keymaps").command_editor()' < /dev/tty > /dev/tty; then
+  if nvim -n -i NONE "$edit_directory/command.sh" -c 'lua require("keymaps").command_editor()' < /dev/tty > /dev/tty; then
     READLINE_LINE="$(< "$edit_directory/command.sh")"
     READLINE_POINT=${#READLINE_LINE}
   fi

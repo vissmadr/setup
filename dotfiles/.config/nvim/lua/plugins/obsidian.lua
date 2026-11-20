@@ -20,8 +20,8 @@ return {
   keys = require("keymaps").obsidian,
   opts = {
     workspaces = {
-      { name = "vault", path = "~/core/vault/" },
-      { name = "grappling", path = "~/core/grappling/" },
+      { name = "vault", path = "~/all/light/vault/" },
+      { name = "grappling", path = "~/all/light/arts/grappling/" },
     },
 
     notes_subdir = "nodes",

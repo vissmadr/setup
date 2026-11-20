@@ -15,6 +15,10 @@ def entries():
     dotfiles = REPOSITORY / "dotfiles"
     yield dotfiles / ".bashrc", Path(".bashrc")
     yield dotfiles / ".gitconfig", Path(".gitconfig")
+    for name in (".bashrc.local", ".gitconfig.local", ".git-credentials"):
+        source = dotfiles / name
+        if source.is_file():
+            yield source, Path(name)
     for source in sorted((dotfiles / ".config").iterdir()):
         yield source, Path(".config") / source.name
     for source in sorted((dotfiles / ".local/bin").iterdir()):
