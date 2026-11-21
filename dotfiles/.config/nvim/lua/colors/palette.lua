@@ -5,6 +5,7 @@
 return {
   -- Black --
   background = "#202020",
+  sumiInk0 = "#16161D",
   dragonBlack0 = "#0d0c0c",
   dragonBlack1 = "#12120f",
   dragonBlack2 = "#1D1C19",

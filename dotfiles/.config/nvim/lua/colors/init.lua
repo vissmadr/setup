@@ -21,6 +21,16 @@ function M.apply()
   for _, name in ipairs({ "treesitter", "markdown", "lsp", "syntax", "editor", "diagnostics", "diff", "plugins" }) do
     apply(require("colors.highlights." .. name))
   end
+
+  -- Match the ANSI colors in Foot and Alacritty for nested terminals.
+  local p = M.palette
+  local terminal_colors = {
+    p.sumiInk0, p.autumnRed, p.autumnGreen, p.boatYellow2, p.crystalBlue, p.oniViolet, p.waveAqua1, p.oldWhite,
+    p.fujiGray, p.samuraiRed, p.springGreen, p.carpYellow, p.springBlue, p.springViolet1, p.waveAqua2, p.vissWhite2,
+  }
+  for index, color in ipairs(terminal_colors) do
+    vim.g["terminal_color_" .. (index - 1)] = color
+  end
 end
 
 return M

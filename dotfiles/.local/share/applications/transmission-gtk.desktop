@@ -1,0 +1,22 @@
+[Desktop Entry]
+Type=Application
+Name=Transmission
+GenericName=BitTorrent Client
+Exec=env GTK_THEME=Adwaita:dark /usr/bin/transmission-gtk %U
+TryExec=/usr/bin/transmission-gtk
+Icon=transmission-gtk
+Terminal=false
+StartupNotify=true
+StartupWMClass=com.transmissionbt.transmission
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Categories=Network;FileTransfer;P2P;GTK;
+Keywords=torrents;downloading;uploading;share;sharing;
+Actions=Pause;Minimize;
+
+[Desktop Action Pause]
+Name=Start Transmission with All Torrents Paused
+Exec=env GTK_THEME=Adwaita:dark /usr/bin/transmission-gtk --paused
+
+[Desktop Action Minimize]
+Name=Start Transmission Minimized
+Exec=env GTK_THEME=Adwaita:dark /usr/bin/transmission-gtk --minimized

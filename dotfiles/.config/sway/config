@@ -5,7 +5,7 @@ set $down j
 set $up k
 set $right l
 set $term foot
-set $menu wmenu-run
+set $menu env PATH=$HOME/.local/bin:$PATH wmenu-run
 set $lock swaylock -f -c 202020
 
 output * bg #363636 solid_color

@@ -5,7 +5,7 @@
 Keep this checkout at `~/all/light/setup`. Install the current Arch packages.
 
 ```sh
-sudo pacman -S sway swaybg swaylock waybar foot alacritty wmenu grim slurp wl-clipboard wf-recorder gammastep brightnessctl pipewire pipewire-pulse wireplumber libpulse pavucontrol networkmanager xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk polkit-gnome mako libnotify ttf-jetbrains-mono-nerd otf-font-awesome util-linux procps-ng bash git python neovim lua ripgrep fd fzf zoxide eza yazi btop less nodejs npm pnpm prettier zig tree-sitter-cli base-devel curl tar zip unzip firefox obsidian imv mpv
+sudo pacman -S sway swaybg swaylock waybar foot alacritty wmenu grim slurp wl-clipboard wf-recorder gammastep brightnessctl pipewire pipewire-pulse wireplumber libpulse pavucontrol networkmanager xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk polkit-gnome mako libnotify ttf-jetbrains-mono-nerd otf-font-awesome util-linux procps-ng bash git python neovim lua ripgrep fd fzf zoxide eza yazi btop less nodejs npm pnpm prettier zig tree-sitter-cli base-devel curl tar zip unzip firefox obsidian imv mpv transmission-gtk
 ```
 
 If you use NetworkManager, enable it with `sudo systemctl enable --now NetworkManager`. Install Codex separately if you use the shell shortcuts.
@@ -40,6 +40,8 @@ If you use Git's credential store, put `.git-credentials` in `dotfiles/` with mo
 ## Shell and Neovim
 
 Use `c` to jump between projects. Run `v` for Neovim, `a` for Codex inside Neovim, or `A` for Codex directly.
+
+Choose `setup` in Codex's `/theme` picker to use the setup palette for code and diffs.
 
 Neovim installs plugins and parsers on first use. Mason installs language servers when you open a file. Run `:MasonInstall stylua` for Lua formatting. Update tools with `:Lazy update`, `:TSUpdate`, and `U` in `:Mason`.
 

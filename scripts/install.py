@@ -24,6 +24,12 @@ def entries():
     for source in sorted((dotfiles / ".local/bin").iterdir()):
         if source.is_file():
             yield source, Path(".local/bin") / source.name
+    for source in sorted((dotfiles / ".local/share/applications").glob("*.desktop")):
+        if source.is_file():
+            yield source, Path(".local/share/applications") / source.name
+    for source in sorted((dotfiles / ".codex/themes").glob("*.tmTheme")):
+        if source.is_file():
+            yield source, Path(".codex/themes") / source.name
 
 
 def install(target, apply=False):
