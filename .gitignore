@@ -1,8 +1,9 @@
 dotfiles/.config/sway/local.conf
 dotfiles/.config/nvim/lazy-lock.json
 dotfiles/.bashrc.local
-dotfiles/.gitconfig.local
+dotfiles/git/*.local
 .git-credentials
+.git-credentials-*
 __pycache__/
 *.pyc
 nvim.log

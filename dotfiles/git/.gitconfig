@@ -1,0 +1,8 @@
+[init]
+    defaultBranch = main
+
+[includeIf "gitdir:~/all/light/"]
+    path = ~/all/light/setup/dotfiles/git/vissmadr.local
+
+[includeIf "gitdir:~/pateplay/"]
+    path = ~/all/light/setup/dotfiles/git/pateplay.local

@@ -5,7 +5,7 @@
 Keep this checkout at `~/all/light/setup`. Install the current Arch packages.
 
 ```sh
-sudo pacman -S sway swaybg swaylock waybar foot alacritty wmenu grim slurp wl-clipboard wf-recorder gammastep brightnessctl pipewire pipewire-pulse wireplumber libpulse pavucontrol networkmanager xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk polkit-gnome mako libnotify ttf-jetbrains-mono-nerd otf-font-awesome util-linux procps-ng bash git python neovim lua ripgrep fd fzf zoxide eza yazi btop less nodejs npm pnpm prettier zig tree-sitter-cli base-devel curl tar zip unzip firefox obsidian imv mpv transmission-gtk
+sudo pacman -S sway swaybg swaylock waybar foot alacritty wmenu grim slurp wl-clipboard wf-recorder gammastep brightnessctl pipewire pipewire-pulse wireplumber libpulse pavucontrol networkmanager xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk polkit-gnome mako libnotify ttf-jetbrains-mono-nerd otf-font-awesome util-linux procps-ng bash git python neovim lua ripgrep fd fzf zoxide eza yazi btop less nodejs npm pnpm prettier zig tree-sitter-cli base-devel curl tar zip unzip firefox obsidian imv vlc mpv transmission-gtk
 ```
 
 If you use NetworkManager, enable it with `sudo systemctl enable --now NetworkManager`. Install Codex separately if you use the shell shortcuts.
@@ -27,14 +27,24 @@ The installer links managed app directories under `~/.config`, Bash and Git sett
 
 ## Local settings
 
-Put personal Bash and Git settings in `dotfiles/.bashrc.local` and `dotfiles/.gitconfig.local`. The installer links both into your home directory. Copy `dotfiles/.config/sway/local.conf.example` to `local.conf` in the same directory for monitor and input overrides.
+Put personal Bash settings in `dotfiles/.bashrc.local`. Copy `dotfiles/.config/sway/local.conf.example` to `local.conf` in the same directory for monitor and input overrides.
 
-If you use Git's credential store, put `.git-credentials` in `dotfiles/` with mode `0600` and add this to `.gitconfig.local`. Git ignores these local files.
+### Git profiles
 
-```gitconfig
-[credential]
-    helper =
-    helper = store --file ~/.git-credentials
+The installer links `~/.gitconfig` to `dotfiles/git/.gitconfig`. Its two `includeIf` rules select a profile by repository location.
+
+| Repositories under | Private profile in this checkout | HTTPS credential store |
+| --- | --- | --- |
+| `~/all/light/` | `dotfiles/git/vissmadr.local` | `~/.git-credentials-vissmadr` |
+| `~/pateplay/` | `dotfiles/git/pateplay.local` | `~/.git-credentials-pateplay` |
+
+On a fresh checkout, restore both Git-ignored profile files. Each sets the commit identity and credential helper. Keep the credential stores directly in your home directory with mode `0600`. For SSH remotes, the Pateplay profile uses `~/pateplay/.ssh/ppkey`.
+
+To verify a profile, run these commands inside the repository you want to check. They show the configured identity and helper path without reading the credential store.
+
+```sh
+git config --show-origin --get user.email
+git config --show-origin --get credential.helper
 ```
 
 ## Shell and Neovim
